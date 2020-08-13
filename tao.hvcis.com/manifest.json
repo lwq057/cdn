@@ -6,8 +6,8 @@
 	"author": "HVCIS",
 	"homepage_url": "https://tao.hvcis.com",
 
-	"scope": "/",
-	"start_url": "/",
+	"scope": "https://tao.hvcis.com/",
+	"start_url": "https://tao.hvcis.com/",
 	"display": "minimal-ui",
 	"lang": "zh-cn",
 	"orientation": "any",
@@ -19,69 +19,69 @@
 	"offline_enabled": true,
 	"icons": [
 		{
-			"16": "/static/ico-32.png",
-			"32": "/static/ico-32.png",
-			"36": "/static/ico-36.png",
-			"48": "/static/ico-48.png",
-			"72": "/static/ico-72.png",
-			"96": "/static/ico-96.png",
-			"114": "/static/ico-114.png",
-			"128": "/static/ico-144.png",
-			"144": "/static/ico-144.png",
-			"256": "/static/ico-256.png",
-			"512": "/static/ico-512.png"
+			"16": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-32.png",
+			"32": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-32.png",
+			"36": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-36.png",
+			"48": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-48.png",
+			"72": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-72.png",
+			"96": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-96.png",
+			"114": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-114.png",
+			"128": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-144.png",
+			"144": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-144.png",
+			"256": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-256.png",
+			"512": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-512.png"
 		},
 		{
-			"src": "/static/ico-32.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-32.png",
 			"type": "image/png",
 			"sizes": "32x32"
 		},
 		{
-			"src": "/static/ico-36.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-36.png",
 			"type": "image/png",
 			"sizes": "36x36"
 		},
 		{
-			"src": "/static/ico-48.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-48.png",
 			"type": "image/png",
 			"sizes": "48x48"
 		},
 		{
-			"src": "/static/ico-72.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-72.png",
 			"type": "image/png",
 			"sizes": "72x72"
 		},
 		{
-			"src": "/static/ico-96.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-96.png",
 			"type": "image/png",
 			"sizes": "96x96"
 		},
 		{
-			"src": "/static/ico-114.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-114.png",
 			"type": "image/png",
 			"sizes": "114x114"
 		},
 		{
-			"src": "/static/ico-144.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-144.png",
 			"type": "image/png",
 			"sizes": "144x144"
 		},
 		{
-			"src": "/static/ico-256.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-256.png",
 			"type": "image/png",
 			"sizes": "256x256"
 		},
 		{
-			"src": "/static/ico-512.png",
+			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/ico-512.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		}
 	],
 	"browser_action":{
 		"browser_style": false,
-		"default_icon": "/static/logo.svg",
+		"default_icon": "https://cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hvcis.com/logo.svg",
 		"default_title": "优惠世家",
-		"default_popup": "/"
+		"default_popup": "https://tao.hvcis.com/"
 	},
 	"chrome_settings_overrides": {
 		"homepage": "https://tao.hvcis.com",

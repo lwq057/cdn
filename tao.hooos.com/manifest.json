@@ -1,0 +1,54 @@
+{
+	"name": "虎窝淘 优惠折扣导购",
+	"short_name": "虎窝淘",
+	"scope": "/",
+	"start_url": ".",
+	"display": "browser",
+	"lang": "zh-cn",
+	"orientation": "any",
+	"description": "天猫淘宝优惠商品折扣导购.",
+	"theme_color": "#fb7c8b",
+	"background_color": "#fff",
+	"icons": [
+		{
+			"src": "https://tao.hooos.com/static/ico-32.png",
+			"type": "image/png",
+			"sizes": "32x32"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-36.png",
+			"type": "image/png",
+			"sizes": "36x36"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-48.png",
+			"type": "image/png",
+			"sizes": "48x48"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-72.png",
+			"type": "image/png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-96.png",
+			"type": "image/png",
+			"sizes": "96x96"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-114.png",
+			"type": "image/png",
+			"sizes": "114x114"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-256.png",
+			"type": "image/png",
+			"sizes": "256x256"
+		},
+		{
+			"src": "https://tao.hooos.com/static/ico-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}

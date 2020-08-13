@@ -1,8 +1,8 @@
 {
 	"name": "虎窝淘 优惠折扣导购",
 	"short_name": "虎窝淘",
-	"scope": "/",
-	"start_url": ".",
+	"scope": "https://tao.hooos.com/",
+	"start_url": "https://tao.hooos.com/",
 	"display": "browser",
 	"lang": "zh-cn",
 	"orientation": "any",

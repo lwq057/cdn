@@ -1,0 +1,102 @@
+{
+	"manifest_version": 2,
+	"version": "1",
+	"name": "优惠世家 优惠选购平台",
+	"short_name": "优惠世家",
+	"author": "HVCIS",
+	"homepage_url": "https://tao.hvcis.com",
+
+	"scope": "/",
+	"start_url": "/",
+	"display": "minimal-ui",
+	"lang": "zh-cn",
+	"orientation": "any",
+	"theme_color": "#ff6b81",
+	"background_color": "#fff",
+
+	"description": "天猫淘宝优惠商品折扣导购.",
+	"incognito": "not_allowed",
+	"offline_enabled": true,
+	"icons": [
+		{
+			"16": "/static/ico-32.png",
+			"32": "/static/ico-32.png",
+			"36": "/static/ico-36.png",
+			"48": "/static/ico-48.png",
+			"72": "/static/ico-72.png",
+			"96": "/static/ico-96.png",
+			"114": "/static/ico-114.png",
+			"128": "/static/ico-144.png",
+			"144": "/static/ico-144.png",
+			"256": "/static/ico-256.png",
+			"512": "/static/ico-512.png"
+		},
+		{
+			"src": "/static/ico-32.png",
+			"type": "image/png",
+			"sizes": "32x32"
+		},
+		{
+			"src": "/static/ico-36.png",
+			"type": "image/png",
+			"sizes": "36x36"
+		},
+		{
+			"src": "/static/ico-48.png",
+			"type": "image/png",
+			"sizes": "48x48"
+		},
+		{
+			"src": "/static/ico-72.png",
+			"type": "image/png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "/static/ico-96.png",
+			"type": "image/png",
+			"sizes": "96x96"
+		},
+		{
+			"src": "/static/ico-114.png",
+			"type": "image/png",
+			"sizes": "114x114"
+		},
+		{
+			"src": "/static/ico-144.png",
+			"type": "image/png",
+			"sizes": "144x144"
+		},
+		{
+			"src": "/static/ico-256.png",
+			"type": "image/png",
+			"sizes": "256x256"
+		},
+		{
+			"src": "/static/ico-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"browser_action":{
+		"browser_style": false,
+		"default_icon": "/static/logo.svg",
+		"default_title": "优惠世家",
+		"default_popup": "/"
+	},
+	"chrome_settings_overrides": {
+		"homepage": "https://tao.hvcis.com",
+		"search_provider": {
+			"name": "优惠世家",
+			"keyword": "商品关键词、商品标题、商品ID、商品链接、淘宝分享链接",
+			"search_url": "https://tao.hvcis.com/search?w={searchTerms}",
+			"favicon_url": "https://tao.hvcis.com/favicon.ico",
+			"suggest_url": "https://suggest.taobao.com/sug?code=utf-8&q={searchTerms}",
+			"encoding": "UTF-8",
+			"is_default": true
+		},
+		"startup_pages": ["https://tao.hvcis.com"]
+	},
+	"omnibox": {
+		"keyword": "优惠世家"
+	}
+}

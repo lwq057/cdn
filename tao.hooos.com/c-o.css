@@ -365,7 +365,7 @@ body>main>*>ul>li:hover>a[buy]{
 
 body>main>div>small{
     width: 100%;
-    display: block;
+    display: inline-block;
     text-align: center;
     position: relative;
 }

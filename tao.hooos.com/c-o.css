@@ -1082,7 +1082,7 @@ body>*>div[i]>nav{
     width: 22%;
     height: 100%;
     float: left;
-    background-color: rgba(255,255,255,0.5);
+    background-color: #f8eeec;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -2069,6 +2069,7 @@ dialog section div[share]>div>div input[type="submit"]{
         display: flex;
         display: inline-flex;
         flex-wrap: wrap;
+        background-color: rgba(255,255,255,.5);
     }
     body>*>div[i]>nav>a{
         flex-grow: 1;

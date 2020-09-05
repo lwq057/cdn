@@ -441,6 +441,9 @@ body>main>form{
     text-align: center;
     padding: 0.5% 0;
     display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: wrap;
 }
 body>main>form>*{
 	margin: 0.2rem;
@@ -448,6 +451,7 @@ body>main>form>*{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    flex-grow: 1;
 }
 body>main>form>*:hover>i{
 	color: #f98288;
@@ -457,7 +461,7 @@ body>main>form>label{
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem;
     margin: 0.4rem;
     border-radius: 3px;
     border: 1px solid #f9bbc1;
@@ -492,6 +496,7 @@ body>main>form input{
     background-color: #fff; 
     cursor: pointer;
     padding: 0 0.3rem;
+    color: #f98288;
 }
 body>main>form>label>i{
 	margin: 0 0.3rem;
@@ -523,7 +528,8 @@ body>main>form>label>input[type=checkbox]:checked:after {
     -o-animation-fill-mode: forwards;
 }
 body>main>form input[name="w"]{
-	width: 15rem;
+    min-width: 15rem;
+    width: 100%;
 }
 
 body>main>article{
@@ -987,13 +993,12 @@ body>*>div>nav[l] + nav[m]{
     width: 79%;
 }
 body>*>div>nav[m]>a{
-    display: block;
+    display: inline-block;
     width: 14.65%;
     padding-top: 14.65%;
     margin: 1%;
     position: relative;
     border: 0.1rem solid #ececec;
-    float: left;
 }
 body>*>div>nav[m]>a>img{
     width: 100%;
@@ -1599,6 +1604,7 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     body>main>form>label{
         padding: 0.3rem 0.6rem;
+        margin: 0.3rem;
     }
     body>*>div>nav a{
         margin: .4rem .6rem;
@@ -1654,11 +1660,23 @@ dialog section div[share]>div>div input[type="submit"]{
         top: 100%;
         display: inline-block;
     }
+    body>*>div[i]>figure>div{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        display: inline-flex;
+        padding: 0;
+        margin-top: 1rem;
+    }
     body>*>div[i]>figure[s] {
         left: 29%;
         width: 71%;
         height: 100%;
         margin: 0;
+    }
+    body>*>div[i]>figure[s]>div{
+        margin-top: 0;
     }
     body>*>div[i]>figure[s]>div>a {
         width: 77%;
@@ -1775,7 +1793,7 @@ dialog section div[share]>div>div input[type="submit"]{
         width: 70%;
     }
     body>main>form input[name="w"]{
-        width: 23rem;
+        min-width: 23rem;
     }
 }
 
@@ -1886,6 +1904,9 @@ dialog section div[share]>div>div input[type="submit"]{
     body>*>div[i]>figure{
         position: static;
     }
+    body>*>div[i]>figure>div{
+        display: block;
+    }
     body>*>div>figure>div>a{
         display: inline-block;
     }
@@ -1929,6 +1950,9 @@ dialog section div[share]>div>div input[type="submit"]{
     body>main>*>ul>li>a>h4{
         font-size: 0.85rem;
     }
+    body>main>form{
+        font-size: 0.8rem;
+    }
     body>*>div[i]>figure>div>a{
         display: inline-block;
     }
@@ -1936,7 +1960,7 @@ dialog section div[share]>div>div input[type="submit"]{
         width: 80%;
     }
     body>main>form input[name="w"] {
-        width: 15rem;
+        min-width: 15rem;
     }
     body>main>*>ul>li>a>p {
         background-size: auto 0.6rem;
@@ -2055,7 +2079,8 @@ dialog section div[share]>div>div input[type="submit"]{
         flex-grow: 1;
         text-align: center;
         background-color: #fff0f0;
-        max-width: 50%;
+        max-width: 47%;
+        margin: 0.4rem 1.5%;
     }
     body>*>div>nav[m]>a{
         background-color: #fff;
@@ -2159,6 +2184,10 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     input[type="checkbox"]~dialog{
         width: 90%;
+    }
+    body>main>form>label {
+        padding: 0.3rem 0.4rem;
+        margin: 0.3rem 0.4rem;
     }
 }
 
@@ -2275,6 +2304,18 @@ dialog section div[share]>div>div input[type="submit"]{
     body>main>article>nav>*{
         width: 48%;
         margin: 1%;
+    }
+    body>main>form>label>input[type=number]{
+        width: auto;
+        border: 1px solid #efefef;
+        margin: 1%;
+    }
+    body>main>form input[name="w"]{
+        min-width: auto;
+        max-width: 100%;
+    }
+    body>*>div>nav>a{
+        max-width: 97%;
     }
 }
 

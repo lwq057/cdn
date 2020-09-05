@@ -589,6 +589,7 @@ body>main>article>div[imgs]>figure>img{
     padding: 0;
     margin: 0;
     display: inline-block;
+    vertical-align: top;
 }
 
 body>main>article>div[info]{
@@ -1757,6 +1758,7 @@ dialog section div[share]>div>div input[type="submit"]{
     body>main>article>div[imgs]>figure>img{
         width: 40%;
         margin: 0 1%;
+        vertical-align: middle;
     }
     body>main>article>div[info]{
         width: 100%;

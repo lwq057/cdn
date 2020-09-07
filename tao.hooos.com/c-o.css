@@ -913,9 +913,27 @@ body>main>section>div>div{
     overflow: hidden;
     max-height: none;
     text-align: center;
+    position: relative;
 }
 body>main>section>div>input:checked ~ div{
-    max-height: 100rem;
+    max-height: 80rem;
+}
+body>main>section>div>input:checked ~ div::after{
+    content: '部分内容已收起';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    color: #fff;
+    font-size: 0.7rem;
+    background: -moz-linear-gradient(rgba(0,0,0,0), #000);
+    background: -webkit-linear-gradient(rgba(0,0,0,0), #000);
+    background: -o-linear-gradient(rgba(0,0,0,0), #000);
+    background: -ms-linear-gradient(rgba(0,0,0,0), #000);
+    background: linear-gradient(rgba(0,0,0,0), #000);
 }
 body>main>section>div>div img{
     vertical-align: top;
@@ -1230,6 +1248,9 @@ body>*>div>p{
     padding: 1%;
     line-height: 170%;
     font-size: 92%;
+}
+body>*>div>p>*{
+    max-width: 100%;
 }
 
 
@@ -1908,6 +1929,7 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     body>*>div[i]>figure>div{
         display: block;
+        margin-top:0;
     }
     body>*>div>figure>div>a{
         display: inline-block;
@@ -1917,6 +1939,9 @@ dialog section div[share]>div>div input[type="submit"]{
         height: auto;
         margin: 2% 1%;
         padding: 1% 0;
+    }
+    body>main>article>div[info]>h1,body>main>article>div[info]>h2,body>main>article>div[info]>h3{
+        padding: 0.8% 0;
     }
     body>main>article>nav{
         position: fixed;
@@ -2028,7 +2053,10 @@ dialog section div[share]>div>div input[type="submit"]{
         width: 25%;
         font-size: 1.4rem;
     }
-    body>main>article>div[info]>h1{
+    body>main>article>div[info]>p>i{
+        padding: 1.4% 0;
+    }
+    body>main>article>div[info]>h1, body>main>article>div[info]>h2, body>main>article>div[info]>h3{
         padding: 1% 0;
     }
     body>main>article>q>*>div{
@@ -2083,6 +2111,8 @@ dialog section div[share]>div>div input[type="submit"]{
         background-color: #fff0f0;
         max-width: 47%;
         margin: 0.4rem 1.5%;
+        word-wrap: break-word;
+        word-break: break-all;
     }
     body>*>div>nav[m]>a{
         background-color: #fff;
@@ -2122,6 +2152,12 @@ dialog section div[share]>div>div input[type="submit"]{
     body>main>*>ul>li>a>h4{
         font-size: 0.8rem;
     }
+    body>main>*>ul>li>a>em>b{
+        font-size: 0.9rem;
+    }
+    body>main>*>ul>li>a>em>s{
+        font-size: 0.7rem;
+    }
     body>main>article>div[info]>h1{
         font-size: 1.2rem;
     }
@@ -2149,11 +2185,13 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     body>main>article>q>*>div{
         width: 100%;
-        height: 6rem;
+        height: auto;
         float: none;
         border-right: none;
         border-radius: 10px 10px 0 0;
         border-bottom: 0.3rem dotted #fff;
+        padding: 0.6rem 0;
+        display: inline-table;
     }
     body>main>article>q>*>i{
         width: 100%;
@@ -2163,6 +2201,15 @@ dialog section div[share]>div>div input[type="submit"]{
         height: auto;
         font-size: 1rem;
         padding: 0.6rem 0;
+        letter-spacing: .4rem;
+        text-indent: .4rem;
+    }
+    body>main>article>div[info]>p,body>main>article>div[info]>b{
+        margin: 1.5% 0;
+    }
+    body>main>article>div[info]>div>i{
+        margin: 0.3rem 0;
+        margin-right: 0.4rem;
     }
     body>main>article>nav>*{
         font-size: 0.9rem;
@@ -2222,8 +2269,17 @@ dialog section div[share]>div>div input[type="submit"]{
         width: 48%;
         padding-top: 48%;
     }
+    body>main>*>ul>li>a>em>b {
+        font-size: 0.8rem;
+    }
+    body>main>*>ul>li>a>em>s{
+        font-size: 0.6rem;
+    }
     body>*>div[i]>figure[s]>div>a{
         height: 15rem;
+    }
+    body>main>article>div[info]>h2, body>main>article>div[info]>h3{
+        font-size: 0.9rem;
     }
     body>main>article>div[info]>div em>b{
         font-size: 1.3rem;
@@ -2286,6 +2342,7 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     body>main>article>div[info]>p>i{
         font-size: 0.6rem;
+        width: 100%;
     }
     body>main>article>q>*>div{
         height: 8rem;

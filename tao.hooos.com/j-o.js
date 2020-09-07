@@ -153,10 +153,13 @@ function datas_list(data,type){
                         html += '<i><img src="'+v.pic_url+'"></i>';
                         html += '<em>';
                         html += '<b>'+v.zk_final_price+'</b>';
+                        var buy = '优惠';
                         if (v.zk_final_price == v.reserve_price){
                             html += '<i>低价</i>';
+                            buy = '低价';
                         }else{
-                            html += '<i>'+discount(v.zk_final_price,v.reserve_price)+'</i><s>'+v.reserve_price+'</s>';
+                            buy = discount(v.zk_final_price,v.reserve_price);
+                            html += '<i>'+buy+'</i><s>'+v.reserve_price+'</s>';
                         }
                         html += '</em>';
                         html += '<h4>'+v.title+'</h4>';
@@ -169,7 +172,7 @@ function datas_list(data,type){
                             html += '<i>已抢'+v.sold_num+'/'+v.total_amount+'</i>';
                         html += '</p>';
                     html += '</a>';
-                    html += '<a buy href="/go?url='+encodeURIComponent(v.click_url)+'">立即抢购</a>';
+                    html += '<a buy href="/go?url='+encodeURIComponent(v.click_url)+'">'+buy+'立即抢购</a>';
                 html += '</li>';
             });
             break;
@@ -185,14 +188,17 @@ function datas_list(data,type){
                     }
                     html += '</i>';
                     html += '<em>';
+                        var buy = '优惠';
                         if (v.hasOwnProperty('coupon_amount')){
                             html += '<b>'+(v.zk_final_price - v.coupon_amount).toFixed(1)+'</b><i>券后价</i><s>'+v.zk_final_price+'</s>';
                         }else{
                             html += '<b>'+v.zk_final_price+'</b>';
                             if (v.zk_final_price == v.reserve_price){
                                 html += '<i>低价</i>';
+                                buy = '低价';
                             }else{
-                                html += '<i>'+discount(v.zk_final_price,v.reserve_price)+'</i><s>'+v.reserve_price+'</s>';
+                                buy = discount(v.zk_final_price,v.reserve_price);
+                                html += '<i>'+buy+'</i><s>'+v.reserve_price+'</s>';
                             }
                         }
                     html += '</em>';
@@ -218,7 +224,7 @@ function datas_list(data,type){
                     if (v.hasOwnProperty('coupon_amount')){
                         html += v.coupon_amount+'元优惠券';
                     }else{
-                        html += '购买';
+                        html += buy+'购买';
                     }
                 html += '</a>';
 
@@ -554,9 +560,10 @@ function countdown(){
 }
 countdown();
 
+
 //点击收起
 $('main>section>div>label[i]').click(function(){
-    $('html').animate({
+    $('body,html').animate({
 		scrollTop:$('body>main>article').offset().top
 	},400);
 });

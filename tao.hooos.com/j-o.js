@@ -18,7 +18,7 @@ function lazyload_img(){
             }else{
                 imgs[i].setAttribute('data-original-url',imgs[i].src+'_400x400q90');
             }
-            imgs[i].src = 'https://img.ui.cn/data/file/6/0/9/1223906.gif?imageView2/1/w/420/h/420';
+            imgs[i].src = 'https://cdn.jsdelivr.net/gh/lwq057/cdn@2.4/tao.hooos.com/lazyload.gif';
         }
     }
 	lazyload_run();
@@ -116,6 +116,13 @@ function datas_list(data,type){
         case 'search':
             $.each(data,function(k,v){
                 html += '<a href="search?w='+k+'">';
+                    html += '<img src="'+v+'"><i>'+k+'</i>';
+                html += '</a>';
+            });
+            break;
+        case 'tag':
+            $.each(data,function(k,v){
+                html += '<a href="tag_'+k+'.html">';
                     html += '<img src="'+v+'"><i>'+k+'</i>';
                 html += '</a>';
             });

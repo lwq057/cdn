@@ -346,12 +346,12 @@ $('body>main>article').ready(function(){
             url = 'https:'+url;
         }
         url = encodeURIComponent(url);
-        var src_1 = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data='+url+'&h=400&w=400&logo=https://img.alicdn.com/tps/i3/T1OjaVFl4dXXa.JOZB-114-114.png&';
+        var src_1 = 'https://api.vip.58.com/genqrcode?size=400x400&margin=0&content='+url+'&h=400&w=400&logo=https://img.alicdn.com/tps/i3/T1OjaVFl4dXXa.JOZB-114-114.png&';
 
         var id = $('input[name="id"]').val();
         var model = $('input[name="model"]').val();
         var img = $('body>main>article figure img').attr('data-original-url') || $('body>main>article figure img').attr('src');
-        var src_2 = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=' + encodeURIComponent('http://'+window.location.host+'/go?id='+id+'&url='+url+'&model='+model) + '&h=400&w=400&logo='+img+'&';
+        var src_2 = 'https://api.vip.58.com/genqrcode?size=400x400&margin=0&content=' + encodeURIComponent('http://taobao.hooos.com/go?id='+id+'&url='+url+'&model='+model) + '&h=400&w=400&logo='+img+'&';
 
         $('body>main>article').append('<input id="qr" type="checkbox"><dialog><header>商品二维码</header><section><input tab="" id="qr-t" type="checkbox"><div tab=""><img src="'+src_1+'" alt="淘宝APP二维码" class="loaded" data-ll-status="loaded"><p>使用淘宝天猫APP扫描二维码购买</p></div><div tab=""><img src="'+src_2+'"><p>扫描或长按识别二维码购买</p></div></section><footer><label for="qr-t">切换</label> <label for="qr">确定</label></footer></dialog>');
         lazyload_run();
@@ -433,7 +433,7 @@ $('body>main>article').ready(function(){
         if (s['tag']){
             s_t += '[ '+s['tag']+' ]<br>';
         }
-        s_t +='详情：'+window.location.href;
+        s_t +='详情：'+(window.location.href).replace(window.location.host,'taobao.hooos.com');
 
         $('body>main>article').append('<input id="share" type="checkbox"><dialog><header>分享文字或图片</header><section><div share><input tab id="share_type" type="checkbox"><div tab><p>长按分享或保存图片发送给好友</p><iframe width="100%" height="100%" src="'+img_src+'"></iframe></div><div tab><div id="share_text">'+s_t+'<br><input id="copysharetext" type="submit" value="点击复制"></div></div></div></section><footer><label for="share_type">图片/文字</label> <label for="share">收起窗口</label></footer></dialog>');
 

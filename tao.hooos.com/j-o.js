@@ -182,9 +182,13 @@ function datas_list(data,type){
 
                 html += '</a>';
 
-                var url = v.url;
+                var url = '';
                 if (v.hasOwnProperty('coupon_share_url')){
                     url = v.coupon_share_url;
+                }else if (v.hasOwnProperty('url')){
+                    url = v.url;
+                }else if (v.hasOwnProperty('click_url')){
+                    url = v.click_url;
                 }
                 url = 'go?url='+encodeURIComponent(url)+'&id='+v.item_id;
                 html += '<a buy href="'+url+'">';

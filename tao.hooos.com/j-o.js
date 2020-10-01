@@ -134,55 +134,6 @@ function datas_list(data,type){
                 html += '</a>';
             });
             break;
-        case 'flashsale':
-            var t = new Date();
-            $.each(data,function(k,v){
-                var st = new Date(v.start_time);
-                var et = new Date(v.end_time);
-                var s,sn;
-                if (t > st && et > t){
-                    sn = '活动中';
-                    s = 1;
-                }else if (t > et){
-                    sn = '已结束';
-                    s = 2;
-                }else if (t < st){
-                    sn = '未开始';
-                    s = 3;
-                }else{
-                    sn = '未知';
-                    s = 0;
-                }
-
-                html += '<li>';
-                var url = ((v.click_url).indexOf('item.htm') != -1) ? 'goods_'+v.num_iid+'.html' : '/go?url='+encodeURIComponent(v.click_url);
-                    html += '<a href="'+url+'">';
-                        html += '<i><img src="'+v.pic_url+'"></i>';
-                        html += '<em>';
-                        html += '<b>'+v.zk_final_price+'</b>';
-                        var buy = '优惠';
-                        if (v.zk_final_price == v.reserve_price){
-                            html += '<i>低价</i>';
-                            buy = '低价';
-                        }else{
-                            buy = discount(v.zk_final_price,v.reserve_price);
-                            html += '<i>'+buy+'</i><s>'+v.reserve_price+'</s>';
-                        }
-                        html += '</em>';
-                        html += '<h4>'+v.title+'</h4>';
-                        html += '<p>';
-                            if (s == 1){
-                                html += '<i cd="'+v.end_time+'" c>抢购中</i>';
-                            }else{
-                                html += '<i cd="'+v.start_time+'">即将开始</i>';
-                            }
-                            html += '<i>已抢'+v.sold_num+'/'+v.total_amount+'</i>';
-                        html += '</p>';
-                    html += '</a>';
-                    html += '<a buy href="/go?url='+encodeURIComponent(v.click_url)+'">'+buy+'立即抢购</a>';
-                html += '</li>';
-            });
-            break;
         default:
             $.each(data,function(i,v){
                 html += '<li>';
@@ -210,16 +161,25 @@ function datas_list(data,type){
                         }
                     html += '</em>';
                     html += '<h4>'+v.title+'</h4>';
-                    var shop = '';
-                    if (v.hasOwnProperty('user_type')){
-                        shop = (v.user_type == '1') ? 'm' : 'b';
-                    }
-                    html += '<p '+shop+'>';
-                        html += '<i>'+((shop == 'm') ? '天猫' : '淘宝')+'月销'+v.volume+'</i>';
-                        if (v.hasOwnProperty('nick')){
-                            html += '<i>'+v.nick+'</i>';
+
+                    if (v.hasOwnProperty('tqg_online_end_time')){
+                        html += '<p>';
+                            html += '<i cd="'+v.tqg_online_end_time+'" c>抢购中</i>';
+                            html += '<i>已抢'+v.tqg_sold_count+'/'+v.tqg_total_count+'</i>';
+                        html += '</p>';
+                    }else{
+                        var shop = '';
+                        if (v.hasOwnProperty('user_type')){
+                            shop = (v.user_type == '1') ? 'm' : 'b';
                         }
-                    html += '</p>';
+                        html += '<p '+shop+'>';
+                            html += '<i>'+((shop == 'm') ? '天猫' : '淘宝')+'月销'+v.volume+'</i>';
+                            if (v.hasOwnProperty('nick')){
+                                html += '<i>'+v.nick+'</i>';
+                            }
+                        html += '</p>';
+                    }
+
                 html += '</a>';
 
                 var url = v.url;
@@ -426,7 +386,7 @@ $('body>main>article').ready(function(){
             s_t += '【优惠券】'+s['coupon']+'元<br>';
         }
         if (s['model']){
-            s['model'] = s['model'].replace('￥','₳');
+            //s['model'] = s['model'].replace('￥','₳');
             s_t += '【淘口令】'+s['model']+'<br>';
             s_t +='(复制此消息，打开手机淘宝，即可购买)<br>';
         }

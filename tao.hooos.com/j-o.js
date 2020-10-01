@@ -147,7 +147,7 @@ function datas_list(data,type){
                     html += '</i>';
                     html += '<em>';
                         var buy = '优惠';
-                        if (v.hasOwnProperty('coupon_amount')){
+                        if (v.hasOwnProperty('coupon_amount') && v.coupon_amount != 0){
                             html += '<b>'+(v.zk_final_price - v.coupon_amount).toFixed(1)+'</b><i>券后价</i><s>'+v.zk_final_price+'</s>';
                         }else{
                             html += '<b>'+v.zk_final_price+'</b>';
@@ -188,7 +188,7 @@ function datas_list(data,type){
                 }
                 url = 'go?url='+encodeURIComponent(url)+'&id='+v.item_id;
                 html += '<a buy href="'+url+'">';
-                    if (v.hasOwnProperty('coupon_amount')){
+                    if (v.hasOwnProperty('coupon_amount') && v.coupon_amount != 0){
                         html += v.coupon_amount+'元优惠券';
                     }else{
                         html += buy+'购买';

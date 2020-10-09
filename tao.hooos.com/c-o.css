@@ -601,6 +601,7 @@ body>main>article>div[info]>h1{
     font-size: 1.4rem;
     width: 100%;
     padding: 0.5% 0;
+    word-break: break-all;
 }
 body>main>article>div[info]>h1::before{
     display: inline-block;
@@ -869,6 +870,11 @@ body>main>section>ol>li{
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 90%;
+}
+body>main>section>ol>li:hover{
+    white-space: pre-wrap;
+    cursor: zoom-in;
+    color: #ff8d2f;
 }
 body>main>section>div{
     width: 70%;

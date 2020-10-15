@@ -301,8 +301,10 @@ $('main>div figure').ready(function(){
 });
 
 
-//二维码购买
+//二维码&淘口令&分享
 $('body>main>article').ready(function(){
+
+    var action = ($('body>main>article>q').length > 0) ? '领券' : '购买';
 
     if ($('body>main>article label[for="qr"]').length>0){
         var url = $('input[name="url"]').val();
@@ -317,14 +319,13 @@ $('body>main>article').ready(function(){
         var img = $('body>main>article figure img').attr('data-original-url') || $('body>main>article figure img').attr('src');
         var src_2 = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=' + encodeURIComponent('http://'+window.location.host+'/go?id='+id+'&url='+url+'&model='+model) + '&h=400&w=400&logo='+img+'&';
 
-        $('body>main>article').append('<input id="qr" type="checkbox"><dialog><header>商品二维码</header><section><input tab="" id="qr-t" type="checkbox"><div tab=""><img src="'+src_1+'" alt="淘宝APP二维码" class="loaded" data-ll-status="loaded"><p>使用淘宝天猫APP扫描二维码购买</p></div><div tab=""><img src="'+src_2+'"><p>扫描或长按识别二维码购买</p></div></section><footer><label for="qr-t">切换</label> <label for="qr">确定</label></footer></dialog>');
+        $('body>main>article').append('<input id="qr" type="checkbox"><dialog><header>二维码'+action+'</header><section><input tab="" id="qr-t" type="checkbox"><div tab=""><img src="'+src_1+'" alt="淘宝APP二维码"><p>[淘宝二维码] 使用淘宝或天猫APP扫码'+action+'</p></div><div tab=""><img src="'+src_2+'" alt="通用二维码"><p>[通用二维码] 扫描或长按识别二维码'+action+'</p></div></section><footer><label for="qr-t">切换</label> <label for="qr">确定</label></footer></dialog>');
         lazyload_run();
     }
 
     if ($('body>main>article label[for="model"]').length>0){
         var model = Math.floor(Math.random()*10) +'.'+ $('input[name="model"]').val() + '.:/';
-        $('body>main>article').append('<input id="model" type="checkbox"><dialog><header>淘口令领券</header><section><p>长按或选中右击复制</p><p id="modelcopy" data-clipboard-text="'+model+'"><b>'+model+'</b></p><p>复制成功打开手机淘宝即可领券</p></section><footer><label id="copymodel" data-clipboard-text="'+model+'">复制</label><label for="model">确定</label></footer></dialog>');
-        //复制淘口令
+        $('body>main>article').append('<input id="model" type="checkbox"><dialog><header>淘口令'+action+'</header><section><p>长按或选中右击复制以下淘口令</p><p id="modelcopy" data-clipboard-text="'+model+'"><b>'+model+'</b></p><p>复制成功后打开淘宝或天猫APP即可'+action+'</p></section><footer><label id="copymodel" data-clipboard-text="'+model+'">一键复制</label><label for="model">确定</label></footer></dialog>');
 
         $('#copymodel').ready(function(){
             if ($(this).length == 0){
@@ -336,15 +337,7 @@ $('body>main>article').ready(function(){
                 $('#copymodel').text('复制成功');
             });
             copymodel.on('error', function(e) {
-                $('#copymodel').text('复制失败');
-            });
-            var modelcopy = new ClipboardJS('#modelcopy');
-            modelcopy.on('success', function(e) {
-                document.getElementById('copymodel').innerText = '复制成功';
-                $('#copymodel').text('复制成功');
-            });
-            modelcopy.on('error', function(e) {
-                $('#copymodel').text('复制失败');
+                $('#copymodel').text('手动复制');
             });
         });
     }
@@ -392,7 +385,7 @@ $('body>main>article').ready(function(){
         if (s['model']){
             //s['model'] = s['model'].replace('￥','₳');
             s_t += '【淘口令】'+s['model']+'<br>';
-            s_t +='(复制此消息，打开手机淘宝，即可购买)<br>';
+            s_t +='(复制此消息，打开淘宝或天猫APP，即可领券购买)<br>';
         }
         if (s['tag']){
             s_t += '[ '+s['tag']+' ]<br>';
@@ -543,8 +536,38 @@ $('main>section>div>label[i]').click(function(){
 });
 
 
+//APP领券购买
+$('body>main>article>q>label').ready(function(){
+    var label = $('body>main>article>q>label');
+    var model = $('body>main>article>nav>label[for="model"]');
+    if (label.length>0 && model.length>0){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger' || ua.match(/baiduboxapp/i) == 'baiduboxapp'){
+            label.attr('for','model');
+        }
+    }
+});
+
 //尾部信息
-$('body>footer').prepend('<p>工信部网站ICP备案：闽ICP备12002928号-2 &nbsp;&nbsp;&nbsp; 公安部网站备案：闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a> &nbsp;&nbsp;&nbsp; <span id="cnzz_stat_icon_1253303069">CNZZ</span></p>');
+$('body>footer').prepend('<p>工信部ICP备案：闽ICP备12002928号-2 &nbsp;&nbsp;&nbsp; 公安部备案：闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a> &nbsp;&nbsp;&nbsp; <span id="cnzz_stat_icon_1253303069">CNZZ</span></p>');
+
+
+//搜索提示改变
+$('body>header>form>input[type="search"]').ready(function(){
+    var search_placeholder = function(){
+        var arr = ['最近想买的东西是不是有优惠了？','可以复制商品标题搜索看看','好像有什么东西该换新的了吧？','最近买的东西有没有买贵了？','查查家人喜欢的东西优惠力度大吗？','天猫淘宝优惠商品都在这里哦','家里是不是缺了点什么东西？','最近有什么想吃的东西吗？','最近有什么好玩的东西吗？','给TA买个礼物吧？'];
+        var index = Math.floor((Math.random()*arr.length));
+        $('body>header>form>input[type="search"]').attr('placeholder',arr[index]);
+    };
+    var sp = setInterval(search_placeholder,10000);
+    $('body>header>form>input[type="search"]').focus(function(){
+        clearInterval(sp);
+        $(this).attr('placeholder','可输入商品关键词、标题、ID、链接');
+        $(this).blur(function(){
+            sp = setInterval(search_placeholder,10000);
+        });
+    });
+});
 
 //百度主动提交
 var a=document.createElement("script");"https"===window.location.protocol.split(":")[0]?a.src="https://zz.bdstatic.com/linksubmit/push.js":a.src="http://push.zhanzhang.baidu.com/push.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);

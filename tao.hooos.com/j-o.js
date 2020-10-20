@@ -306,6 +306,7 @@ $('body>main>article').ready(function(){
 
     var action = ($('body>main>article>q').length > 0) ? '领券' : '购买';
 
+    //二维码
     if ($('body>main>article label[for="qr"]').length>0){
         var url = $('input[name="url"]').val();
         if (url.substr(0,2) == '//'){
@@ -323,6 +324,7 @@ $('body>main>article').ready(function(){
         lazyload_run();
     }
 
+    //淘口令
     if ($('body>main>article label[for="model"]').length>0){
         var model = Math.floor(Math.random()*10) +'.'+ $('input[name="model"]').val() + '.:/';
         $('body>main>article').append('<input id="model" type="checkbox"><dialog><header>淘口令'+action+'</header><section><p>长按或选中右击复制以下淘口令</p><p id="modelcopy" data-clipboard-text="'+model+'"><b>'+model+'</b></p><p>复制成功后打开淘宝或天猫APP即可'+action+'</p></section><footer><label id="copymodel" data-clipboard-text="'+model+'">一键复制</label><label for="model">确定</label></footer></dialog>');
@@ -342,8 +344,8 @@ $('body>main>article').ready(function(){
         });
     }
 
-    if ($('body>main>article label[for="share"]').length>0){ 
-
+    //分享
+    if ($('body>main>article label[for="share"]').length>0){
         var s = {};
         s['id'] = $('input[name="id"]').val();
         s['img'] = $('body>main>article figure img').attr('data-original-url') || $('body>main>article figure img').attr('src');
@@ -354,22 +356,24 @@ $('body>main>article').ready(function(){
         s['tag'] = $('body>main>article>div[info]>div[t]>i').map(function(){
             return $(this).text();
         }).get().join(',') || '';
-        s['num'] = $('body>main>article>div[info]>b>i').map(function(){
-            return $(this).text();
-        }).get().join(',') || '';
-        s['model'] = $('input[name="model"]').val() || '';
+
         var img_src = '/server/static/share.html?';
         $.each(s,function(i,v){
             img_src += '&'+i+'='+v;
         });
 
-        var s_t = Math.floor(Math.random()*10)+'<br><img src="'+s['img']+'"><br>';
+        s['num'] = $('body>main>article>div[info]>b>i').map(function(){
+            return $(this).text();
+        }).get().join(',') || '';
+        s['model'] = $('input[name="model"]').val() || '';
+
+        var s_t = '0.0<br><img src="'+s['img']+'"><br>';
         s_t += s['title']+'<br>';
         if (s['num']){
             s_t += '[ '+s['num']+' ]<br>';
         }
         if (s['oprice']){
-            s_t += '【原售价】'+s['oprice']+'元<br>';
+            s_t += '【原售价】'+s['oprice']+'元';
         }
         if (s['price']){
             if (s['coupon']){
@@ -379,20 +383,28 @@ $('body>main>article').ready(function(){
             }
         }
         if (s['coupon']){
-            s_t += '【券后价】'+(s['price']-s['coupon'])+'元<br>';
+            s_t += '【券后价】'+(s['price']-s['coupon']).toFixed(2)+'元';
             s_t += '【优惠券】'+s['coupon']+'元<br>';
         }
         if (s['model']){
             //s['model'] = s['model'].replace('￥','₳');
             s_t += '【淘口令】'+s['model']+'<br>';
-            s_t +='(复制此消息，打开淘宝或天猫APP，即可领券购买)<br>';
+            s_t +='(复制此消息，打开淘宝或天猫APP，即可'+action+')<br>';
         }
         if (s['tag']){
             s_t += '[ '+s['tag']+' ]<br>';
         }
         s_t +='详情：'+window.location.href;
 
-        $('body>main>article').append('<input id="share" type="checkbox"><dialog><header>分享文字或图片</header><section><div share><input tab id="share_type" type="checkbox"><div tab><p>长按分享或保存图片发送给好友</p><iframe width="100%" height="100%" src="'+img_src+'"></iframe></div><div tab><div id="share_text">'+s_t+'<br><input id="copysharetext" type="submit" value="点击复制"></div></div></div></section><footer><label for="share_type">图片/文字</label> <label for="share">收起窗口</label></footer></dialog>');
+        $('body>main>article').append('<input id="share" type="checkbox"><dialog><header>分享文字或图片</header><section><div share><input tab id="share_type" type="checkbox"><div tab><p>长按分享或保存图片发送给好友</p><iframe id="share_img" width="100%" height="100%" data-src="'+img_src+'" src="'+s['img']+'"></iframe></div><div tab><div id="share_text">'+s_t+'<br><input id="copysharetext" type="submit" value="点击复制"></div></div></div></section><footer><label for="share_type">图片/文字</label> <label for="share">收起窗口</label></footer></dialog>');
+
+        $('#share').click(function(){
+            var share_img = $('#share_img');
+            if (share_img.attr('data-src')){
+                share_img.attr('src',share_img.attr('data-src'));
+                share_img.removeAttr('data-src');
+            }
+        });
 
         $('#copysharetext').ready(function(){
             if ($(this).length == 0){
@@ -407,7 +419,7 @@ $('body>main>article').ready(function(){
                 $('#copysharetext').val('复制成功去分享吧');
             });
             copysharetext.on('error', function(e) {
-                $('#copysharetext').val('复制失败,请长按或选中右击复制。');
+                $('#copysharetext').val('复制失败请长按或选中右击复制');
             });
         });
     }
@@ -568,6 +580,40 @@ $('body>header>form>input[type="search"]').ready(function(){
         });
     });
 });
+
+
+//快捷操作
+$('body').append('<s><i t title="回顶部"></i><i r title="上一页"></i></s>');
+$('body>s>i[t]').click(function(){
+    $('body,html').animate({scrollTop:0},400);
+});
+$('body>s>i[r]').click(function(){
+    history.back();
+});
+$(window).scroll(function(){
+    $('body>s').hide();
+    clearTimeout($.data(this,'scrollTimer'));
+    $.data(this,'scrollTimer',setTimeout(function(){
+        $('body>s').show();
+        if ($(window).scrollTop() > 100){
+            $('body>s>i[t]').show();
+        }else{
+            $('body>s>i[t]').hide();
+        }
+        if (document.referrer.indexOf(window.location.host) > 0){
+            $('body>s>i[r]').show();
+        }else{
+            $('body>s>i[r]').hide();
+        }
+    },800));
+});
+
+//导航相关
+if ($('body>main>article').length > 0){
+    if ($('body>main>div>nav>a').length > 0){
+        $('body>nav>a').eq(1).attr('href',$('body>main>div>nav>a').eq(0).attr('href'));
+    }
+}
 
 //百度主动提交
 var a=document.createElement("script");"https"===window.location.protocol.split(":")[0]?a.src="https://zz.bdstatic.com/linksubmit/push.js":a.src="http://push.zhanzhang.baidu.com/push.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);

@@ -1363,6 +1363,39 @@ dialog footer>*{
     color: #ff7b56;
     z-index: 2;
 }
+
+body>s{
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 8;
+}
+body>s>i{
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    display: block;
+    background-color: #fff;
+    color: #ff927c;
+    text-align: center;
+    font-style: normal;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #dadada;
+}
+body>s>i:hover{
+    background-color: #fa7d89;
+    color: #fff;
+}
+body>s>i[t]::after{
+    content: '↑';
+}
+body>s>i[r]::after{
+    content: '↩';
+}
+
 input[type="checkbox"]{
     display: none !important;
 }
@@ -1997,6 +2030,9 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     body>main>*>ul>li>a>p {
         background-size: auto 0.6rem;
+    }
+    body>s{
+        bottom: 4.4rem;
     }
 }
 

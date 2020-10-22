@@ -34,6 +34,9 @@ function lazyload_run(){
             callback_loaded:function(el){
                 el.setAttribute('data-original-url',el.src);
             },
+            callback_error:function(el){
+                el.setAttribute('src',el.src);
+            },
             cancel_on_exit: true
         });
     }else{
@@ -426,6 +429,25 @@ $('body>main>article').ready(function(){
 
 });
 
+//获取视频
+function dav(){
+    if ($('body>main>section>div>div>video').length == 0){
+        var id = $('input[name="id"]').val();
+        if (id){
+            $.ajax({
+                url:'/dav_'+id,
+                async:true,
+                dataType:'json',
+                success:function(result){
+                    if (result.video){
+                        $('body>main>section>div>div[n]').prepend(result.video);
+                    }
+                    console.log(result);
+                }
+            });
+        }
+    }
+}
 
 //读取详情与属性
 function descattr(data){
@@ -439,6 +461,7 @@ function descattr(data){
         });
         $('body>main>section>ol[n]').append(attr);
     }
+    dav();
     load_viewer();
 }
 

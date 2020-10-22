@@ -439,10 +439,9 @@ function dav(){
                 async:true,
                 dataType:'json',
                 success:function(result){
-                    if (result.video){
+                    if (result && result.video){
                         $('body>main>section>div>div[n]').prepend(result.video);
                     }
-                    console.log(result);
                 }
             });
         }

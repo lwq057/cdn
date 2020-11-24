@@ -115,21 +115,14 @@ function datas_list(data,type){
     switch (type) {
         case 'search':
             $.each(data,function(k,v){
-                html += '<a href="search?w='+k+'">';
-                    html += '<img src="'+v+'"><i>'+k+'</i>';
-                html += '</a>';
-            });
-            break;
-        case 'tag':
-            $.each(data,function(k,v){
-                html += '<a href="tag_'+k+'.html">';
+                html += '<a href="/w-'+k+'/">';
                     html += '<img src="'+v+'"><i>'+k+'</i>';
                 html += '</a>';
             });
             break;
         case 'category':
             $.each(data,function(k,v){
-                html += '<a href="category_'+k+'.html">';
+                html += '<a href="/c-'+k+'/">';
                     html += '<img src="'+v.p+'"><i>'+v.n+'</i>';
                 html += '</a>';
             });

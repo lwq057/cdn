@@ -69,6 +69,8 @@ $('main>article figure').ready(function(){
     if ($('main>article figure img').length == 0){
         return false;
     }
+    $('body>main>section>div>div').append($('main>article figure').html());
+    load_viewer();
     $('main>article figure').addClass('goods-wrapper').parent().addClass('goods-container').scrollLeft(0).css('overflow','hidden');
     $('main>article figure img').addClass('goods-slide');
     $('main>article figure').after('<i class="p"></i>');

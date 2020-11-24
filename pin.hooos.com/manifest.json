@@ -1,0 +1,55 @@
+{
+	"manifest_version": 2,
+	"version": "1",
+	"name": "虎窝拼优惠",
+	"short_name": "虎窝拼",
+	"author": "HVCIS",
+	"homepage_url": "https://pin.hooos.com",
+
+	"scope": "https://pin.hooos.com/",
+	"start_url": "https://pin.hooos.com/",
+	"display": "minimal-ui",
+	"lang": "zh-cn",
+	"orientation": "any",
+	"theme_color": "#ff6b81",
+	"background_color": "#fff",
+
+	"description": "拼多多优惠商品折扣导购.",
+	"incognito": "not_allowed",
+	"offline_enabled": true,
+	"icons": {
+		"16": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"32": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"36": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"48": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"72": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"96": "hhttps://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"114": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"128": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"144": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"256": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"512": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg"
+	},
+	"browser_action":{
+		"browser_style": false,
+		"default_icon": "https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/logo.svg",
+		"default_title": "虎窝拼",
+		"default_popup": "https://pin.hooos.com/"
+	},
+	"chrome_settings_overrides": {
+		"homepage": "https://pin.hooos.com",
+		"search_provider": {
+			"name": "优惠世家",
+			"keyword": "商品关键词、商品标题、商品ID、商品链接、淘宝分享链接",
+			"search_url": "https://pin.hooos.com/w/?w={searchTerms}",
+			"favicon_url": "https://pin.hooos.com/favicon.ico",
+			"suggest_url": "https://suggest.taobao.com/sug?code=utf-8&q={searchTerms}",
+			"encoding": "UTF-8",
+			"is_default": true
+		},
+		"startup_pages": ["https://pin.hooos.com"]
+	},
+	"omnibox": {
+		"keyword": "优惠世家"
+	}
+}

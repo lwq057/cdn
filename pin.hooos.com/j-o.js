@@ -323,16 +323,18 @@ $('body>main>article').ready(function(){
         s['price'] = $('body>main>article>div[info]>div em>b[p]').text() || 0;
         s['oprice'] = $('body>main>article>div[info]>div em>b[o]').text() || 0;
         s['coupon'] = $('body>main>article>q>*>div>em').text() || 0;
-        s['title'] = $('body>main>article>div[info]>h2').text() || $('body>main>article>div[info]>h1').text();
+        var title = s['title'] = $('body>main>article>div[info]>h2').text() || $('body>main>article>div[info]>h1').text();
         s['tag'] = $('body>main>article>div[info]>div[t]>i').map(function(){
             return $(this).text();
         }).get().join('、') || '';
         s['cat'] = $('body>main>div>nav>a').eq(0).text() || '';
 
         var img_src = '/server/share.html?';
+        s['title'] = encodeURI(s['title']);
         $.each(s,function(i,v){
             img_src += '&'+i+'='+v;
         });
+        s['title'] = title;
 
         s['num'] = $('body>main>article>div[info]>b>i').map(function(){
             return $(this).text();

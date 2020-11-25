@@ -145,7 +145,7 @@ function datas_list(data,type){
                             html += '<b>'+((v.min_group_price - v.coupon_discount)/100).toFixed(1)+'</b><i>券后价</i>';
                             buy = (v.coupon_discount/100)+'元优惠券';
                         }else{
-                            html += '<b>'+v.min_group_price+'</b>';
+                            html += '<b>'+(v.min_group_price/100)+'</b>';
                             if (v.min_normal_price == v.min_group_price){
                                 html += '<i>低价</i>';
                                 buy = '低价购买';

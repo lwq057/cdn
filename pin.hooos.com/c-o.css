@@ -183,39 +183,41 @@ body>main>*>h1,body>main>*>h2,body>aside>*>h2,body>aside>*>h3{
     z-index: 2;
     width: 100%;
 }
-body>main>*>h1>i,body>main>*>h2>i{
+
+body>main>*>h1>nav,body>main>*>h2>nav,body>main>*>h1>div,body>main>*>h2>div{
     margin-left: 0.4rem;
+    display: inline-block;
 }
-body>main>*>h1>i>*,body>main>*>h2>i>*,body>main>*>h1>u>*,body>main>*>h2>u>*{
+body>main>*>h1>nav>*,body>main>*>h2>nav>*,body>main>*>h1>div>*,body>main>*>h2>div>*{
     display: inline-block;
     font-weight: normal;
     font-size: 80%;
     margin: 0 0.4rem;
     cursor: pointer;
 }
-body>main>*>h1>i>label:hover{
+body>main>*>h1>*>label:hover{
     color: #e3544c;;
 }
-body>main>*>h1>u>label[for="filter"]::after{
+body>main>*>h1>*>label[for="filter"]::after{
     content: ' ≡';
 }
-body>main>*>h1>i>*[c],body>main>*>h2>i>*[c],body>main>*>h1>u>*[c],body>main>*>h2>u>*[c]{
+body>main>*>h1>*>*[c],body>main>*>h2>*>*[c]{
     font-weight: bold;
     color: #e3544c;
 }
 
-body>main>*>h1>u{
+body>main>*>h1>q,body>main>*>h1>i{
     font-weight: normal;
     font-size: 80%;
     margin-left: 0.4rem;
 }
-body>main>*>h1>u>*{
+body>main>*>h1>span>*,body>main>*>h1>span>*{
     font-size: 100%;
 }
-body>main>*>h1>u>label[s]{
+body>main>*>h1>*>label[s]{
     position: relative;
 }
-body>main>*>h1>u>label[s]::after{
+body>main>*>h1>*>label[s]::after{
     content: ' ';
     position: absolute;
     top: 0;
@@ -224,7 +226,7 @@ body>main>*>h1>u>label[s]::after{
     height: 100%;
     z-index: 2;
 }
-body>main>*>h1>u>label[s]>u{
+body>main>*>h1>*>label[s]>i{
     position: absolute;
     top: 100%;
     left: 0;
@@ -239,17 +241,17 @@ body>main>*>h1>u>label[s]>u{
     border: 1px solid #eaeaea;
     border-top: 0;
 }
-body>main>*>h1>u>label[s]>u>a{
+body>main>*>h1>*>label[s]>i>a{
     width: 100%;
     z-index: 1;
     display: inline-block;
     white-space: nowrap;
     font-weight: normal;
 }
-body>main>*>h1>u>label[s]>u>a[c]{
+body>main>*>h1>*>label[s]>i>a[c]{
     color: #e3544c;
 }
-body>main>*>h1>u>label[s]>input[type="checkbox"]:checked ~ u{
+body>main>*>h1>*>label[s]>input[type="checkbox"]:checked ~ i{
     display: block;
 }
 
@@ -320,7 +322,8 @@ body>main>*>ul>li>a>em{
     margin: 0.2rem 0;
 }
 body>main>*>ul>li>a>em>*{
-	font-style: normal;
+    font-style: normal;
+    vertical-align: middle;
 }
 body>main>*>ul>li>a>em>b{
 	color: #e3544c;
@@ -333,7 +336,7 @@ body>main>*>ul>li>a>em>i{
     border: 1px solid #f98288;
     color: #f98288;
     padding: 0 .2rem;
-    margin: .4rem 0;
+    margin: 0;
     border-radius: 3px;
     font-size: .6rem;
     box-sizing: border-box;
@@ -357,6 +360,7 @@ body>main>*>ul>li>a>h4{
     -webkit-box-orient: vertical;
     display: -webkit-box;
     word-break: break-all;
+    min-height: 2.8rem;
     padding: 2%;
 	line-height: 1.4rem;
 	font-size: 0.9rem;
@@ -388,7 +392,7 @@ body>main>*>ul>li>a>p>i:nth-child(odd){
 body>main>*>ul>li>a>p>i:nth-child(even){
     float: right;
 }
-body>main>*>ul>li>a[buy]{
+body>main>*>ul>li>a:last-child{
     position: absolute;
     bottom: 1%;
     left: 2%;
@@ -399,22 +403,20 @@ body>main>*>ul>li>a[buy]{
     border-radius: 4px;
     font-size: 0.8rem;
     color: #fff;
-    background: #f98288;
-    background: -moz-linear-gradient(left,#fa4dbe 0,#fbaa58 100%);
-    background: -webkit-gradient(linear,left top,left right,color-stop(0,#fa4dbe),color-stop(100%,#fbaa58));
-    background: -webkit-linear-gradient(left,#fa4dbe 0,#fbaa58 100%);
-    background: -o-linear-gradient(left,#fa4dbe 0,#fbaa58 100%);
-    background: -ms-linear-gradient(left,#fa4dbe 0,#fbaa58 100%);
-    background: linear-gradient(to left,#fa4dbe 0,#fbaa58 100%);
+    background:#fbaa58;
     display: none;
 }
-body>main>*>ul>li>a[buy]::after{
+body>main>*>ul>li>a:last-child[c]{
+    background: #f98288;
+}
+
+body>main>*>ul>li>a:last-child::after{
     content: '前往';
 }
-body>main>*>ul>li:hover>a[buy]{
+body>main>*>ul>li:hover>a:last-child{
     display: block;
 }
-body>main>*>ul>li:hover>a[buy]:hover{
+body>main>*>ul>li:hover>a:last-child:hover{
     color: #fff;
     background: #e3554c;
 }
@@ -1275,7 +1277,7 @@ body>*>div[i]>figure[s]>div{
 }
 body>*>div[i]>figure[s]>div>a{
     display: inline-block;
-    width: 77%;
+    width: 90%;
     height: 100%;
     margin: 0;
 }
@@ -1594,8 +1596,12 @@ dialog section>form[f]>div label{
     margin: 1%;
     display: inline-block;
     white-space: nowrap;
+    vertical-align: middle;
 }
-dialog section>form[f]>div label>input[type="checkbox"] ~ i{
+dialog section>form[f]>div label>i{
+    vertical-align: middle;
+    height: 2rem;
+	line-height: 2rem;
     border: 1px solid #eaeaea;
     border-radius: 4px;
     border-top-width: 1px;
@@ -1607,26 +1613,31 @@ dialog section>form[f]>div label>input[type="checkbox"] ~ i:hover{
 dialog section>form[f]>div label>input[type="checkbox"] ~ i::before{
     content: '. ';
     color: #fff;
+    padding-left: 0.4rem;
 }
 dialog section>form[f]>div label>input[type="checkbox"] ~ i::after{
     content: ' .';
     color: #fff;
+    padding-right: 0.4rem;
 }
 dialog section>form[f]>div label>input[type="checkbox"]:checked ~ i{
     background-color: #e46c63;
     color: #fff;
 }
 dialog section>form[f]>div select{
+    background-color: #fff;
     border: 1px solid #eaeaea;
     border-radius: 4px;
     border-top-width: 1px;
+    height: 2rem;
     margin: 1%;
-    padding: 0.8% 1%;
+    padding: 0 0.4rem;
     display: inline-block;
     white-space: nowrap;
     -webkit-appearance: auto;
     -moz-appearance: auto;
     appearance: auto;
+    vertical-align: middle;
 }
 dialog section>form[f]>div select:hover{
     color: #e3544c;
@@ -1637,13 +1648,15 @@ dialog section>form[f]>div select>option{
 }
 dialog section>form[f]>div input[type="number"]{
     border: 1px solid #eaeaea;
-    padding: 0.8% 1%;
+	height: 2rem;
+	padding: 0 1%;
     border-radius: 4px;
+    vertical-align: middle;
 }
 dialog section>form[f]>div>i{
     white-space: nowrap;
     max-width: 100%;
-    padding: 0.8% 1%;
+    padding: 0.8% 1.1%;
 }
 dialog section>form[f]>div>i>input[type="number"]{
     max-width: 48%;
@@ -1804,7 +1817,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         width: 50%;
     }
     body>*>div[i]>figure[s]>div>a{
-        width: 90%;
+        width: 100%;
     }
     body>header>form{
         width: 44%;
@@ -1824,7 +1837,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>nav a{
         width: 13%;
     }
-    body>main>*>h1>i, body>main>*>h2>i {
+    body>main>*>h1>nav, body>main>*>h2>nav {
         margin-left: 0;
         float: right;
     }
@@ -1841,7 +1854,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         padding: 0.3rem 0.6rem;
         margin: 0.3rem;
     }
-    body>main>*>ul>li>a[buy]{
+    body>main>*>ul>li>a:last-child{
         height: 1.8rem;
         line-height: 1.8rem;
     }
@@ -1914,7 +1927,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         margin-top: 0;
     }
     body>*>div[i]>figure[s]>div>a {
-        width: 77%;
+        width: 90%;
     }
     body>*>div[i]>figure>div>a{
         width: 8rem;
@@ -1998,7 +2011,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         width: 100%;
         float: none;
     }
-    body>main>*>ul>li>a[buy] {
+    body>main>*>ul>li>a:last-child {
         height: 1.7rem;
         line-height: 1.7rem;
     }
@@ -2021,6 +2034,9 @@ dialog section>form[f]>div>i>input[type="number"]{
     }
     body>main>section>div>div{
         width: 790px;
+    }
+    body>main>section>div>div p{
+        font-size: 100%;
     }
     body>main>article>div[info]>p{
         padding: 0.5% 0;
@@ -2078,12 +2094,12 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>header>form{
         width: 69%;
     }
-    body>main>*>ul>li>a[buy]{
+    body>main>*>ul>li>a:last-child{
         bottom: 1.5%;
         left: 2%;
         width: 96%;
     }
-    body>main>*>h1>i, body>main>*>h2>i{
+    body>main>*>h1>nav, body>main>*>h2>nav{
         display: block;
         width: 100%;
         white-space: nowrap;
@@ -2091,11 +2107,11 @@ dialog section>form[f]>div>i>input[type="number"]{
         line-height: 2rem;
         text-align: center;
     }
-    body>main>*>h1>i>*, body>main>*>h2>i>*{
+    body>main>*>h1>nav>*, body>main>*>h2>nav>*{
         margin: 0 0.6rem;
         display: inline-block;
     }
-    body>main>*>h1>i>a:first-child, body>main>*>h2>i>a:first-child{
+    body>main>*>h1>nav>a:first-child, body>main>*>h2>i>a:first-child{
         margin-left: 0;
     }
     body>*>div>nav{
@@ -2129,7 +2145,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     }
     body>*>div[i]>figure[s]>div>a{
         height: 18rem;
-        width: 70%;
+        width: 84%;
     }
     body>*>div[i]>figure[s]>div>a>img{
         height: 100%;
@@ -2156,6 +2172,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         height: auto;
         margin: 1%;
         padding: 1% 0;
+        border: none;
     }
     body>main>article>div[info]>h1,body>main>article>div[info]>h2,body>main>article>div[info]>h3{
         padding: 0.8% 0;
@@ -2251,7 +2268,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>main>*>ul>li>a>p{
         background-size: 0;
     }
-    body>main>*>ul>li>a[buy]{
+    body>main>*>ul>li>a:last-child{
         position: static;
         display: inline-block;
         width: 100%;
@@ -2381,7 +2398,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>main>article>div[info]>h1{
         font-size: 1.2rem;
     }
-    body>main>*>ul>li>a[buy]{
+    body>main>*>ul>li>a:last-child{
         font-size: 0.7rem;
     }
     input[type="checkbox"]~dialog{
@@ -2393,6 +2410,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>main>*>ul>li{
         width: 48%;
         padding: 1%;
+        box-shadow: none;
     }
     body>*>div[i]>figure[s]>div>a{
         width: 100%;
@@ -2448,7 +2466,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>*>div[a]>a{
         width: 31.33%;
     }
-    body>main>*>h1>i, body>main>*>h2>i{
+    body>main>*>h1>nav, body>main>*>h2>nav{
         text-align: center;
     }
     body>main>*>h1, body>main>*>h2, body>aside>*>h2, body>aside>*>h3{
@@ -2544,7 +2562,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>main>*>h1, body>main>*>h2, body>aside>*>h2, body>aside>*>h3{
         position: static;
     }
-    body>main>*>h1>i, body>main>*>h2>i{
+    body>main>*>h1>nav, body>main>*>h2>nav{
         white-space: normal;
         text-align: center;
         line-height: 1.6rem;
@@ -2552,7 +2570,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         background-color: #f9f9f9;
         margin-top: 0.4rem;
     }
-    body>main>*>h1>i>*, body>main>*>h2>i>*{
+    body>main>*>h1>nav>*, body>main>*>h2>nav>*{
         margin: 0 0.6rem 0 0;
         display: inline-block;
         line-height: normal;

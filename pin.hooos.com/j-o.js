@@ -160,7 +160,11 @@ function datas_list(data,type){
                     html += '<h4>'+v.goods_name+'</h4>';
                     html += '<p><i>销量'+v.sales_tip+'</i><i>'+v.mall_name+'</i></p>';
                 html += '</a>';
-                html += '<a buy href="/go-'+v.goods_id+'/">'+buy+'</a>';
+                if (v.hasOwnProperty('coupon_discount') && v.coupon_discount != 0){
+                    html += '<a c href="/go-'+v.goods_id+'/">'+buy+'</a>';
+                }else{
+                    html += '<a href="/go-'+v.goods_id+'/">'+buy+'</a>';
+                }
                 html += '</li>';
             });
             break;

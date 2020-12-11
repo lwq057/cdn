@@ -2046,6 +2046,11 @@ dialog section>form[f]>div>i>input[type="number"]{
     body>main>form input[name="w"]{
         min-width: 23rem;
     }
+    body>main>*>ul>li>a>i:hover>q{
+        font-size: .8rem;
+        line-height: 1.6rem;
+        align-items: start;
+    }
 }
 
 @media screen and (max-width:900px){
@@ -2222,6 +2227,9 @@ dialog section>form[f]>div>i>input[type="number"]{
     }
     body>s{
         bottom: 4.4rem;
+    }
+    body>main>*>ul>li>a>i:hover>q{
+        line-height: 1.4rem;
     }
 }
 

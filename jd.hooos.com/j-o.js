@@ -500,6 +500,13 @@ $('body>main>article').ready(function(){
                 this.tryCount++;
                 if (result.content){
                     $('body>main>section>div>div').append(result.content);
+                    if ($('#zbViewWeChatMiniImages').length>0){
+                        let imgs = $('#zbViewWeChatMiniImages').attr('value').split(',').map(function(v){
+                            return '<img src="https://img1.360buyimg.com/'+v+'">';
+                        });
+                        $('#zbViewWeChatMiniImages').after(imgs);
+                        $("<link>").attr({rel:"stylesheet",type:"text/css",href:"//sku-market-gw.jd.com/css/mobile/"+id+".css"}).appendTo("head");
+                    }
                     lazyload_img();
                     load_viewer();
                 }else if(this.tryCount < this.retryLimit){

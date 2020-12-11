@@ -83,8 +83,9 @@ share_img.removeAttr("data-src")}});$("#copysharetext").ready(function(){if($(th
 copysharetext.on("error",function(e){$("#copysharetext").val("复制失败请长按或选中右击复制")})})
 }});$("body>main>article").ready(function(){var id=$('input[name="id"]').val();if(id){var api="https://wqsitem.jd.com/detail/"+id+"_d_normal.html";
 $.ajax({url:api,timeout:1000,tryCount:0,retryLimit:10,cache:false,async:false,dataType:"jsonp",jsonp:"callback",jsonpCallback:"cb"+id,success:function(result){this.tryCount++;
-if(result.content){$("body>main>section>div>div").append(result.content);lazyload_img();
-load_viewer()}else{if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url=api
+if(result.content){$("body>main>section>div>div").append(result.content);if($("#zbViewWeChatMiniImages").length>0){let imgs=$("#zbViewWeChatMiniImages").attr("value").split(",").map(function(v){return'<img src="https://img1.360buyimg.com/'+v+'">'
+});$("#zbViewWeChatMiniImages").after(imgs);$("<link>").attr({rel:"stylesheet",type:"text/css",href:"//sku-market-gw.jd.com/css/mobile/"+id+".css"}).appendTo("head")
+}lazyload_img();load_viewer()}else{if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url=api
 }$.ajax(this);return}}},error:function(){this.tryCount++;if(this.url.length>400){this.url=api
 }if(this.tryCount<this.retryLimit){$.ajax(this)}return}})}});function load_viewer(){if($("body>main>article>div[imgs]>figure").length>0){if(typeof(window.figure_viewers)!=="object"){window.figure_viewers=new Viewer($("body>main>article>div[imgs]>figure")[0],{url:"data-original-url",shown:function(){lazyload_run()
 },view:function(o){var url=o.detail.image.src;o.detail.image.src=url.replace("_400x400q90","")

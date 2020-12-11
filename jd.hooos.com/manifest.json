@@ -1,0 +1,55 @@
+{
+	"manifest_version": 2,
+	"version": "1",
+	"name": "虎窝购优惠",
+	"short_name": "虎窝购",
+	"author": "HVCIS",
+	"homepage_url": "https://jd.hooos.com",
+
+	"scope": "https://jd.hooos.com/",
+	"start_url": "https://jd.hooos.com/",
+	"display": "minimal-ui",
+	"lang": "zh-cn",
+	"orientation": "any",
+	"theme_color": "#ff6b81",
+	"background_color": "#fff",
+
+	"description": "京东优惠商品折扣导购.",
+	"incognito": "not_allowed",
+	"offline_enabled": true,
+	"icons": {
+		"16": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"32": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"36": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"48": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"72": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"96": "hhttps://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"114": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"128": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"144": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"256": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"512": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg"
+	},
+	"browser_action":{
+		"browser_style": false,
+		"default_icon": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"default_title": "虎窝拼",
+		"default_popup": "https://jd.hooos.com/"
+	},
+	"chrome_settings_overrides": {
+		"homepage": "https://jd.hooos.com",
+		"search_provider": {
+			"name": "虎窝购",
+			"keyword": "商品关键词、商品标题、商品ID、商品链接",
+			"search_url": "https://jd.hooos.com/w/?w={searchTerms}",
+			"favicon_url": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/favicon.ico",
+			"suggest_url": "https://suggest.taobao.com/sug?code=utf-8&q={searchTerms}",
+			"encoding": "UTF-8",
+			"is_default": true
+		},
+		"startup_pages": ["https://jd.hooos.com"]
+	},
+	"omnibox": {
+		"keyword": "虎窝购"
+	}
+}

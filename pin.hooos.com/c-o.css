@@ -2149,8 +2149,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     }
     body>*>div[i]>figure[s]>div>a>img{
         height: 100%;
-        width: auto;
-        max-width: 100%;
+        width: 100%;
     }
     body>*>div[i]>nav{
         position: static;

@@ -217,15 +217,16 @@ function datas_list(data,type){
                     }
                     html += '</i>';
                     html += '<em>';
-                        if (v.hasOwnProperty('couponInfo') && (v.couponInfo.couponList.length > 0) && v.priceInfo.hasOwnProperty('lowestCouponPrice')){
+                        let is_coupon = false;
+                        if (v.hasOwnProperty('couponInfo') && (v.couponInfo.couponList.length > 0) && v.priceInfo.hasOwnProperty('lowestCouponPrice') && (v.priceInfo.lowestCouponPrice != v.priceInfo.lowestPrice)){
                             html += '<b>'+v.priceInfo.lowestCouponPrice+'</b><i>券后价</i>';
+                            is_coupon = true;
                         }else{
                             html += '<b>'+v.priceInfo.lowestPrice+'</b>';
                             if (v.priceInfo.lowestPriceType == 3){
                                 html += '<i>秒杀价</i>';
                             }else if (v.priceInfo.lowestPriceType == 2){
                                 html += '<i>拼购价</i>';
-                                buy = buy+'抢购';
                             }else{
                                 html += '<i>促销价</i>';
                             }
@@ -235,7 +236,7 @@ function datas_list(data,type){
                     html += '<h4>'+v.skuName+'</h4>';
                     html += '<p><i>'+v.comments+'评价</i><i>'+v.shopInfo.shopName+'</i></p>';
                 html += '</a>';
-                if (v.hasOwnProperty('couponInfo') && (v.couponInfo.couponList.length > 0) && v.priceInfo.hasOwnProperty('lowestCouponPrice')){
+                if (is_coupon){
                     html += '<a c href="/go-'+v.skuId+'/?curl='+encodeURI(v.couponInfo.couponList[0].link)+'">'+(v.priceInfo.lowestPrice-v.priceInfo.lowestCouponPrice).toFixed(2)+'元优惠券</a>';
                 }else{
                     html += '<a href="/go-'+v.skuId+'/">抢购</a>';
@@ -499,6 +500,7 @@ $('body>main>article').ready(function(){
             success:function(result){
                 this.tryCount++;
                 if (result.content){
+                    result.content = result.content.replace(/http:\/\//ig,'https://');
                     $('body>main>section>div>div').append(result.content);
                     if ($('#zbViewWeChatMiniImages').length>0){
                         let imgs = $('#zbViewWeChatMiniImages').attr('value').split(',').map(function(v){

@@ -33,12 +33,12 @@ html+="<u>"+(st.getFullYear()+"."+(st.getMonth()+1)+"."+st.getDate())+"-"+(et.ge
 html+="</li>"});break;default:$.each(data,function(i,v){html+="<li>";html+='<a href="/g-'+v.skuId+'/">';
 html+="<i>";html+='<img src="'+v.imageInfo.imageList[0].url+'">';if(v.hasOwnProperty("documentInfo")){html+="<q>优惠 "+v.documentInfo.document+"</q>"
 }else{html+="<u>"+v.brandName+" ";if(v.owner=="g"){html+="京东自营 "}if(v.deliveryType==1){html+="京东配送"
-}html+="</u>"}html+="</i>";html+="<em>";if(v.hasOwnProperty("couponInfo")&&(v.couponInfo.couponList.length>0)&&v.priceInfo.hasOwnProperty("lowestCouponPrice")){html+="<b>"+v.priceInfo.lowestCouponPrice+"</b><i>券后价</i>"
-}else{html+="<b>"+v.priceInfo.lowestPrice+"</b>";if(v.priceInfo.lowestPriceType==3){html+="<i>秒杀价</i>"
-}else{if(v.priceInfo.lowestPriceType==2){html+="<i>拼购价</i>";buy=buy+"抢购"}else{html+="<i>促销价</i>"
+}html+="</u>"}html+="</i>";html+="<em>";let is_coupon=false;if(v.hasOwnProperty("couponInfo")&&(v.couponInfo.couponList.length>0)&&v.priceInfo.hasOwnProperty("lowestCouponPrice")&&(v.priceInfo.lowestCouponPrice!=v.priceInfo.lowestPrice)){html+="<b>"+v.priceInfo.lowestCouponPrice+"</b><i>券后价</i>";
+is_coupon=true}else{html+="<b>"+v.priceInfo.lowestPrice+"</b>";if(v.priceInfo.lowestPriceType==3){html+="<i>秒杀价</i>"
+}else{if(v.priceInfo.lowestPriceType==2){html+="<i>拼购价</i>"}else{html+="<i>促销价</i>"
 }}}html+="<s>"+v.priceInfo.price+"</s>";html+="</em>";html+="<h4>"+v.skuName+"</h4>";
 html+="<p><i>"+v.comments+"评价</i><i>"+v.shopInfo.shopName+"</i></p>";html+="</a>";
-if(v.hasOwnProperty("couponInfo")&&(v.couponInfo.couponList.length>0)&&v.priceInfo.hasOwnProperty("lowestCouponPrice")){html+='<a c href="/go-'+v.skuId+"/?curl="+encodeURI(v.couponInfo.couponList[0].link)+'">'+(v.priceInfo.lowestPrice-v.priceInfo.lowestCouponPrice).toFixed(2)+"元优惠券</a>"
+if(is_coupon){html+='<a c href="/go-'+v.skuId+"/?curl="+encodeURI(v.couponInfo.couponList[0].link)+'">'+(v.priceInfo.lowestPrice-v.priceInfo.lowestCouponPrice).toFixed(2)+"元优惠券</a>"
 }else{html+='<a href="/go-'+v.skuId+'/">抢购</a>'}html+="</li>"});break}return html
 }$("small[p]").ready(function(){var pages=$("small[p]");if(pages.length==0){return false
 }var page=parseInt(pages.attr("p"))||0;var max_page=parseInt(pages.attr("m"))||0;
@@ -83,7 +83,8 @@ share_img.removeAttr("data-src")}});$("#copysharetext").ready(function(){if($(th
 copysharetext.on("error",function(e){$("#copysharetext").val("复制失败请长按或选中右击复制")})})
 }});$("body>main>article").ready(function(){var id=$('input[name="id"]').val();if(id){var api="https://wqsitem.jd.com/detail/"+id+"_d_normal.html";
 $.ajax({url:api,timeout:1000,tryCount:0,retryLimit:10,cache:false,async:false,dataType:"jsonp",jsonp:"callback",jsonpCallback:"cb"+id,success:function(result){this.tryCount++;
-if(result.content){$("body>main>section>div>div").append(result.content);if($("#zbViewWeChatMiniImages").length>0){let imgs=$("#zbViewWeChatMiniImages").attr("value").split(",").map(function(v){return'<img src="https://img1.360buyimg.com/'+v+'">'
+if(result.content){result.content=result.content.replace(/http:\/\//ig,"https://");
+$("body>main>section>div>div").append(result.content);if($("#zbViewWeChatMiniImages").length>0){let imgs=$("#zbViewWeChatMiniImages").attr("value").split(",").map(function(v){return'<img src="https://img1.360buyimg.com/'+v+'">'
 });$("#zbViewWeChatMiniImages").after(imgs);$("<link>").attr({rel:"stylesheet",type:"text/css",href:"//sku-market-gw.jd.com/css/mobile/"+id+".css"}).appendTo("head")
 }lazyload_img();load_viewer()}else{if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url=api
 }$.ajax(this);return}}},error:function(){this.tryCount++;if(this.url.length>400){this.url=api

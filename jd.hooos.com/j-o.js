@@ -509,7 +509,7 @@ $('body>main>article').ready(function(){
                         $('#zbViewWeChatMiniImages').after(imgs);
                     }
                     if ($('div[cssurl]').length>0){
-                        $("<link>").attr({rel:"stylesheet",type:"text/css",href:"//sku-market-gw.jd.com/css/mobile/"+id+".css"}).appendTo("head");
+                        $("<link>").attr({rel:"stylesheet",type:"text/css",href:$('div[cssurl]').attr('cssurl')}).appendTo("head");
                     }
                     lazyload_img();
                     load_viewer();

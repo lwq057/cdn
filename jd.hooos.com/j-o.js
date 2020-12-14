@@ -507,6 +507,8 @@ $('body>main>article').ready(function(){
                             return '<img src="https://img1.360buyimg.com/'+v+'">';
                         });
                         $('#zbViewWeChatMiniImages').after(imgs);
+                    }
+                    if ($('div[cssurl]').length>0){
                         $("<link>").attr({rel:"stylesheet",type:"text/css",href:"//sku-market-gw.jd.com/css/mobile/"+id+".css"}).appendTo("head");
                     }
                     lazyload_img();

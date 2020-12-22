@@ -23,8 +23,8 @@ let status=["","即将开始","进行中","已结束"];$.each(data,function(i,v)
 html+="<i>";if(v.hasOwnProperty("imgList")&&(v.imgList.length>0)){let imgwh=[];$.each(v.imgList,function(ii,vv){imgwh[vv.widthHeight]=ii
 });let imgi=0;if(imgwh["350*350"]){imgi=imgwh["350*350"]}else{if(imgwh["250*250"]){imgi=imgwh["250*250"]
 }}html+='<img alt="'+v.title+'" src="'+v.imgList[imgi].imgUrl+'">'}else{html+='<img alt="'+v.title+'" src="http://misc.360buyimg.com/mtd/pc/index/gb/images/lazyload.gif">'
-}if(v.content){html+="<q>"+v.content+"</q>"}else{let st=new Date(v.startTime);let et=new Date(v.endTime);
-html+="<u>"+(st.getFullYear()+"."+(st.getMonth()+1)+"."+st.getDate())+"-"+(et.getFullYear()+"."+(et.getMonth()+1)+"."+et.getDate())+"</u>"
+}if(v.content){html+="<q>"+$(v.content).text()+"</q>"}else{let st=new Date(v.startTime);
+let et=new Date(v.endTime);html+="<u>"+(st.getFullYear()+"."+(st.getMonth()+1)+"."+st.getDate())+"-"+(et.getFullYear()+"."+(et.getMonth()+1)+"."+et.getDate())+"</u>"
 }html+="</i>";html+="<em>";html+="<i>"+status[v.actStatus]+"</i>";if(v.hasOwnProperty("recommend")){html+="<i>"+v.recommend+"星推荐</i>"
 }html+="</em>";html+="<h4>"+v.title+"（"+v.advantage+"）</h4>";html+="<p>";if(v.actStatus==1){html+='<i cd="'+v.startTime+'">即将开始</i>'
 }else{if(v.actStatus==2){html+='<i cd="'+v.endTime+'">活动中</i>'}else{html+="<i>已结束</i>"
@@ -59,12 +59,14 @@ if($('body>main>article label[for="qr"]').length>0){var id=$('input[name="id"]')
 var url=$('input[name="url"]').val();var murl=$('input[name="url"]').val();var img=$("body>main>article figure img").attr("data-original-url")||$("body>main>article figure img").attr("src");
 $("body>main>article").append('<input id="qr" type="checkbox"><dialog><header>二维码'+action+'</header><section><input tab="" id="qr-t" type="checkbox"><div id="q1" tab></div><div id="q2" tab></div></section><footer><label for="qr-t">切换</label> <label for="qr">确定</label></footer></dialog>');
 var op={render:"canvas",minVersion:1,maxVersion:40,ecLevel:"H",left:0,top:0,size:500,text:location.origin,fill:"#000",background:null,radius:0.1,quiet:2,mode:4,mSize:0.2,mPosX:0.5,mPosY:0.5,label:"goods",fontname:"sans",fontcolor:"#000"};
-var image1=new Image();image1.src="https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/wx.png";
-image1.onload=function(){op.text=url;op.image=this;$("#q1").qrcode(op).append("<p>[微信二维码] 使用微信、微博、浏览器等APP扫码"+action+"</p>")
-};var image2=new Image();image2.src=img;image2.onload=function(){op.text=location.origin+"/go-"+id+"/?url="+encodeURIComponent(url)+"&murl="+encodeURIComponent(murl);
-op.image=this;$("#q2").qrcode(op).append("<p>[通用二维码] 扫描或长按识别二维码"+action+"</p>")}}if($('body>main>article label[for="share"]').length>0){var s={};
-s.id=$('input[name="id"]').val();s.url=$('input[name="url"]').val()||$('input[name="murl"]').val()||"";
-s.img=$("body>main>article figure img").attr("data-original-url")||$("body>main>article figure img").attr("src");
+let is_pc=true;if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){is_pc=false
+}var image1=new Image();image1.src="https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/wx.png";
+image1.onload=function(){op.text=url;if(is_pc){op.image=this}else{op.render="image"
+}$("#q1").qrcode(op).append("<p>[微信二维码] 使用微信、微博、浏览器等APP扫码"+action+"</p>")};var image2=new Image();
+image2.src=img;image2.onload=function(){op.text=location.origin+"/go-"+id+"/?url="+encodeURIComponent(url)+"&murl="+encodeURIComponent(murl);
+if(is_pc){op.image=this}else{op.render="image"}$("#q2").qrcode(op).append("<p>[通用二维码] 扫描或长按识别二维码"+action+"</p>")
+}}if($('body>main>article label[for="share"]').length>0){var s={};s.id=$('input[name="id"]').val();
+s.url=$('input[name="url"]').val()||$('input[name="murl"]').val()||"";s.img=$("body>main>article figure img").attr("data-original-url")||$("body>main>article figure img").attr("src");
 s.price=$("body>main>article>div[info]>div em>b[p]").text()||0;s.oprice=$("body>main>article>div[info]>div em>b[o]").text()||0;
 s.coupon=$("body>main>article>q>*>div>em").text()||0;var title=s.title=$("body>main>article>div[info]>h2").text()||$("body>main>article>div[info]>h1").text();
 var tag=s.tag=$("body>main>article>div[info]>div[t]>i").map(function(){return $(this).text()
@@ -98,7 +100,7 @@ var day=parseInt(time/1000/60/60/24);var hour=parseInt(time/1000/60/60%24);var m
 var seconds=parseInt(time/1000%60);if(!day){$(e).html(hour+":"+minute+":"+seconds+s)
 }else{$(e).html(day+"天"+hour+":"+minute+":"+seconds+s)}},1000)}$(this).removeAttr("cd")
 })}countdown();$("main>section>div>label[i]").click(function(){$("body,html").animate({scrollTop:$("body>main>article").offset().top},400)
-});$("body>footer").prepend('<p>闽ICP备12002928号 &nbsp;&nbsp;&nbsp; 闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a> &nbsp;&nbsp;&nbsp; <span id="cnzz_stat_icon_1253303069">CNZZ</span></p>');
+});$("body>footer").prepend('<p>闽ICP备12002928号 &nbsp;&nbsp;&nbsp; 闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a><span id="cnzz_stat_icon_1253303069" style="display:none">CNZZ</span></p>');
 $('body>header>form>input[type="search"]').ready(function(){var search_placeholder=function(){var arr=["最近想买的东西是不是有优惠了？","可以复制商品标题搜索看看","好像有什么东西该换新的了吧？","最近买的东西有没有买贵了？","查查家人喜欢的东西优惠力度大吗？","家里是不是缺了点什么东西？","最近有什么想吃的东西吗？","最近有什么好玩的东西吗？","给TA买个礼物吧？"];
 var index=Math.floor((Math.random()*arr.length));$('body>header>form>input[type="search"]').attr("placeholder",arr[index])
 };var sp=setInterval(search_placeholder,10000);$('body>header>form>input[type="search"]').focus(function(){clearInterval(sp);

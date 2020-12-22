@@ -1049,6 +1049,55 @@ body>main>section>div>div #J_AttrUL li{
     font-size: 0.8rem;
     line-height: 2rem;
 }
+body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+    background-size: 100% auto;
+}
+@media screen and (max-width:750px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        background-color: #fff;
+        zoom: 0.94;
+    }
+}
+@media screen and (max-width:700px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.9;
+    }
+}
+@media screen and (max-width:660px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.85;
+    }
+}
+@media screen and (max-width:600px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.78;
+    }
+}
+@media screen and (max-width:550px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.7;
+    }
+}
+@media screen and (max-width:500px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.64;
+    }
+}
+@media screen and (max-width:450px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.57;
+    }
+}
+@media screen and (max-width:400px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.5;
+    }
+}
+@media screen and (max-width:350px){
+    body>main>section>div>div .ssd-module-mobile-wrap>div[data-id]{
+        zoom: 0.44;
+    }
+}
 
 body>*>div>nav{
     width: 100%;
@@ -2171,7 +2220,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         height: auto;
         margin: 1%;
         padding: 1% 0;
-        border: none;
+        background-color: #fff;
     }
     body>main>article>div[info]>h1,body>main>article>div[info]>h2,body>main>article>div[info]>h3{
         padding: 0.8% 0;

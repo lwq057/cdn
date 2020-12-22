@@ -164,7 +164,7 @@ function datas_list(data,type){
                         html += '<img alt="'+v.title+'" src="http://misc.360buyimg.com/mtd/pc/index/gb/images/lazyload.gif">';
                     }
                     if (v.content){
-                        html += '<q>'+v.content+'</q>';
+                        html += '<q>'+$(v.content).text()+'</q>';
                     }else{
                         let st = new Date(v.startTime);
                         let et = new Date(v.endTime);
@@ -379,11 +379,20 @@ $('body>main>article').ready(function(){
             fontcolor: '#000'
         }
 
+        let is_pc = true;
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            is_pc = false;
+        }
+
         var image1 = new Image();
         image1.src = 'https://cdn.jsdelivr.net/gh/lwq057/cdn@4.4/pin.hooos.com/wx.png';
         image1.onload = function(){
             op.text = url;
-            op.image = this;
+            if (is_pc){
+                op.image = this;
+            }else{
+                op.render = 'image';
+            }
             $("#q1").qrcode(op).append('<p>[微信二维码] 使用微信、微博、浏览器等APP扫码'+action+'</p>');
         }
 
@@ -391,7 +400,11 @@ $('body>main>article').ready(function(){
         image2.src = img;
         image2.onload = function(){
             op.text = location.origin + '/go-'+id+'/?url='+encodeURIComponent(url)+'&murl='+encodeURIComponent(murl);
-            op.image = this;
+            if (is_pc){
+                op.image = this;
+            }else{
+                op.render = 'image';
+            }
             $("#q2").qrcode(op).append('<p>[通用二维码] 扫描或长按识别二维码'+action+'</p>');
         }
     }
@@ -601,7 +614,7 @@ $('main>section>div>label[i]').click(function(){
 
 
 //尾部信息
-$('body>footer').prepend('<p>闽ICP备12002928号 &nbsp;&nbsp;&nbsp; 闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a> &nbsp;&nbsp;&nbsp; <span id="cnzz_stat_icon_1253303069">CNZZ</span></p>');
+$('body>footer').prepend('<p>闽ICP备12002928号 &nbsp;&nbsp;&nbsp; 闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a><span id="cnzz_stat_icon_1253303069" style="display:none">CNZZ</span></p>');
 
 
 //搜索提示改变

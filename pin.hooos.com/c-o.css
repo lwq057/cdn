@@ -57,7 +57,7 @@ body>header::after{
 }
 
 body>header>a{
-    color: #e3544c;
+    color: #e97670;
     font-size: 2.8rem;
     display: block;
     height: 4rem;
@@ -332,7 +332,7 @@ body>main>*>ul>li>a>em>b{
     margin-right: .3rem;
 }
 body>main>*>ul>li>a>em>i{
-	display: inline;
+	display: inline-block;
     border: 1px solid #f98288;
     color: #f98288;
     padding: 0 .2rem;
@@ -1080,6 +1080,9 @@ body>*>div>nav a:hover,body>*>div>nav a[c]{
     color: #fff;
 }
 
+body>*>div>nav[w]>a{
+    background-color: #fff;
+}
 body>*>div>nav[l]{
     width: 20%;
     float: left;
@@ -1134,7 +1137,7 @@ body>*>div>nav[m]>a:hover{
     border-color: #ff605f;
 }
 body>*>div>nav[h]{
-    max-height: 10rem;
+    max-height: 13rem;
     overflow: auto;
 }
 
@@ -2171,7 +2174,7 @@ dialog section>form[f]>div>i>input[type="number"]{
         height: auto;
         margin: 1%;
         padding: 1% 0;
-        border: none;
+        background-color: #fff;
     }
     body>main>article>div[info]>h1,body>main>article>div[info]>h2,body>main>article>div[info]>h3{
         padding: 0.8% 0;
@@ -2340,17 +2343,20 @@ dialog section>form[f]>div>i>input[type="number"]{
         display: flex;
         display: inline-flex;
         flex-wrap: wrap;
+        align-items: center;
     }
     body>*>div>nav>a{
         flex-grow: 1;
         text-align: center;
         background-color: #fff0f0;
-        max-width: 47%;
         margin: 0.4rem 1.5%;
         word-wrap: break-word;
         word-break: break-all;
     }
-    body>*>div>nav[m]>a{
+    body>*>div>nav>a:last-child{
+        max-width: 60%;
+    }
+    body>*>div>nav[w]>a,body>*>div>nav[m]>a{
         background-color: #fff;
     }
     body>*>div[i]>nav{

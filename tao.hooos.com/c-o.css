@@ -272,11 +272,11 @@ body>main>*>ul>li>a>em>b{
     margin-right: .3rem;
 }
 body>main>*>ul>li>a>em>i{
-	display: inline;
+	display: inline-block;
     border: 1px solid #f98288;
     color: #f98288;
     padding: 0 .2rem;
-    margin: .4rem 0;
+    margin: 0;
     border-radius: 3px;
     font-size: .6rem;
     box-sizing: border-box;
@@ -2162,15 +2162,18 @@ dialog section div[share]>div>div input[type="submit"]{
         display: flex;
         display: inline-flex;
         flex-wrap: wrap;
+        align-items: center;
     }
     body>*>div>nav>a{
         flex-grow: 1;
         text-align: center;
         background-color: #fff0f0;
-        max-width: 47%;
         margin: 0.4rem 1.5%;
         word-wrap: break-word;
         word-break: break-all;
+    }
+    body>*>div>nav>a:last-child{
+        max-width: 60%;
     }
     body>*>div>nav[m]>a{
         background-color: #fff;

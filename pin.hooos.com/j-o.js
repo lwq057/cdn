@@ -15,7 +15,7 @@ function lazyload_img(){
     for(var i=0; i<imgs.length; i++){
         if (!imgs[i].getAttribute('data-original-url') && !imgs[i].getAttribute('data-ll-status')){
             imgs[i].setAttribute('data-original-url',imgs[i].src);
-            imgs[i].src = 'http://t16img.yangkeduo.com/mms_static/2019-12-02/01518d0e-8e64-4848-8246-5860810bf4cd.png';
+            imgs[i].src = 'https://cdn.jsdelivr.net/gh/lwq057/cdn@5.7/pin.hooos.com/pdd.png';
         }
     }
 	lazyload_run();

@@ -3,7 +3,7 @@ $('a[href^="/go-"]').attr("target","_blank");$('a[href^="go?"]').attr("target","
 $('a[href^="go-"]').attr("target","_blank");$("form").attr("target","_blank")}links();
 function lazyload_img(){var imgs=document.querySelectorAll("img");for(var i=0;i<imgs.length;
 i++){if(!imgs[i].getAttribute("data-original-url")&&!imgs[i].getAttribute("data-ll-status")){imgs[i].setAttribute("data-original-url",imgs[i].src);
-imgs[i].src="http://t16img.yangkeduo.com/mms_static/2019-12-02/01518d0e-8e64-4848-8246-5860810bf4cd.png"
+imgs[i].src="https://cdn.jsdelivr.net/gh/lwq057/cdn@5.7/pin.hooos.com/pdd.png"
 }}lazyload_run()}function lazyload_run(){if(typeof(window.lazyloads)!=="object"){window.lazyloads=new LazyLoad({elements_selector:"img",data_src:"original-url",threshold:500,callback_loaded:function(el){el.setAttribute("data-original-url",el.src)
 },callback_error:function(el){el.setAttribute("src",el.src)},cancel_on_exit:true})
 }else{window.lazyloads.update()}}lazyload_img();$('body>header>form>input[type="search"]').ready(function(){if($(this).length==0){return false

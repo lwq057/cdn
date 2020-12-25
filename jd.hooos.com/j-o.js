@@ -514,6 +514,7 @@ $('body>main>article').ready(function(){
                 this.tryCount++;
                 if (result.content){
                     result.content = result.content.replace(/http:\/\//ig,'https://');
+                    result.content = result.content.replace(/\/\/item.jd.com\/([\d]+)\.html/ig,'//'+window.location.host+'/g-$1/');
                     $('body>main>section>div>div').append(result.content);
                     if ($('#zbViewWeChatMiniImages').length>0){
                         let imgs = $('#zbViewWeChatMiniImages').attr('value').split(',').map(function(v){
@@ -523,6 +524,8 @@ $('body>main>article').ready(function(){
                     }
                     if ($('div[cssurl]').length>0){
                         $("<link>").attr({rel:"stylesheet",type:"text/css",href:$('div[cssurl]').attr('cssurl')}).appendTo("head");
+                    }else if ($('div.ssd-module-mobile-wrap').length>0){
+                        $("<link>").attr({rel:"stylesheet",type:"text/css",href:"//sku-market-gw.jd.com/css/mobile/"+id+".css"}).appendTo("head");
                     }
                     lazyload_img();
                     load_viewer();

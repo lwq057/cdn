@@ -1,4 +1,5 @@
 
+
 //链接处理
 function links(){
     $('a[href^="/go?"]').attr('target','_blank');
@@ -449,6 +450,18 @@ function dav(q){
                         }
                     }
                     descattr(result);
+                    if (result.desc == ''){
+                        var desc = '';
+                        $('main>article figure img').each(function(){
+                            var src = $(this).attr('data-original-url') || $(this).attr('src');
+                            if(desc.indexOf(src)==-1){
+                                desc += '<img src="'+src+'">';
+                            }
+                        });
+                        descattr({
+                            desc:desc.replaceAll('_400x400q90','')
+                        });
+                    }
                 }
             });
         }
@@ -458,7 +471,10 @@ function dav(q){
 //读取详情与属性
 function descattr(data){
     if ($('body>main>section>div>div[n]').length > 0){
-        $('body>main>section>div>div[n]').append(data.pcDescContent || data.desc);
+        var desc = data.pcDescContent || data.desc;
+        if (desc){
+            $('body>main>section>div>div[n]').append(desc).removeAttr('n');
+        }
     }
     if ($('body>main>section>ol[n]').length > 0){
         var attr = '';
@@ -475,7 +491,9 @@ function descattr(data){
                 });
             });
         }
-        $('body>main>section>ol[n]').append(attr);
+        if (attr){
+            $('body>main>section>ol[n]').append(attr).removeAttr('n');
+        }
     }
     load_viewer();
 }

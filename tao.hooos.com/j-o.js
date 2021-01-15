@@ -1,3 +1,4 @@
+
 //链接处理
 function links(){
     $('a[href^="/go?"]').attr('target','_blank');
@@ -430,18 +431,24 @@ $('body>main>article').ready(function(){
 });
 
 //获取视频
-function dav(){
-    if ($('body>main>section>div>div>video').length == 0){
+function dav(q){
+    if (q){
         var id = $('input[name="id"]').val();
         if (id){
             $.ajax({
                 url:'/dav_'+id,
                 async:true,
+                data:q,
+                type:'GET',
                 dataType:'json',
+                cache:'true',
                 success:function(result){
-                    if (result && result.video){
-                        $('body>main>section>div>div[n]').prepend(result.video);
+                    if ($('body>main>section>div>div>video').length == 0){
+                        if (result && result.video){
+                            $('body>main>section>div>div[n]').prepend(result.video);
+                        }
                     }
+                    descattr(result);
                 }
             });
         }
@@ -451,16 +458,25 @@ function dav(){
 //读取详情与属性
 function descattr(data){
     if ($('body>main>section>div>div[n]').length > 0){
-        $('body>main>section>div>div[n]').append(data.pcDescContent);
+        $('body>main>section>div>div[n]').append(data.pcDescContent || data.desc);
     }
     if ($('body>main>section>ol[n]').length > 0){
         var attr = '';
-        $.each(data.itemProperties,function(i,v){
-            attr += '<li>'+v['name']+'：'+v['value']+'</li>';
-        });
+        if (data.itemProperties){
+            $.each(data.itemProperties,function(i,v){
+                attr += '<li>'+v['name']+'：'+v['value']+'</li>';
+            });
+        }else if(data.attr){
+            $.each(data.attr[0],function(i,v){
+                $.each(v,function(ii,vv){
+                    $.each(vv,function(iii,vvv){
+                        attr += '<li>'+iii+'：'+vvv+'</li>';
+                    });
+                });
+            });
+        }
         $('body>main>section>ol[n]').append(attr);
     }
-    dav();
     load_viewer();
 }
 
@@ -481,14 +497,17 @@ $('body>main>article').ready(function(){
                 jsonp:'callback',
                 success:function(result){
                     this.tryCount++;
-                    if (result.data){
+                    if (result.data.pcDescContent){
                         descattr(result.data);
+                        dav({v:1});
                     }else if(this.tryCount < this.retryLimit){
                         if (this.url.length > 400){
                             this.url = api;
                         }
                         $.ajax(this);
                         return;
+                    }else{
+                        dav({d:1,a:1,v:1});
                     }
                 },
                 error:function(){
@@ -498,6 +517,8 @@ $('body>main>article').ready(function(){
                     }
                     if(this.tryCount < this.retryLimit){
                         $.ajax(this);
+                    }else{
+                        dav({d:1,a:1,v:1});
                     }
                     return;
                 }
@@ -648,6 +669,10 @@ var a=document.createElement("script");"https"===window.location.protocol.split(
 
 //cnzz数据统计
 var cnzz_s_tag =document.createElement('script');cnzz_s_tag.type ='text/javascript';cnzz_s_tag.async =true;cnzz_s_tag.charset= 'utf-8';cnzz_s_tag.src ='https://s4.cnzz.com/stat.php?id=1253303069&async=1&online=2';var root_s =document.getElementsByTagName('script')[0];root_s.parentNode.insertBefore(cnzz_s_tag,root_s);
+
+//图标
+$("<link>").attr({rel:'shortcut icon',href:"//cdn.jsdelivr.net/gh/lwq057/cdn@1.3/tao.hooos.com/favicon.ico"}).appendTo("head");
+$("<link>").attr({rel:'manifest',href:"//cdn.jsdelivr.net/gh/lwq057/cdn@1.4/tao.hooos.com/manifest.json"}).appendTo("head");
 
 //关闭提示
 if(document.referrer.indexOf(document.domain) == -1){

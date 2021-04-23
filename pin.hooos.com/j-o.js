@@ -132,7 +132,7 @@ function datas_list(data,type){
         default:
             $.each(data,function(i,v){
                 html += '<li>';
-                html += '<a href="/g-'+v.goods_id+'/">';
+                html += '<a href="/g-'+v.goods_sign+'/">';
                     html += '<i>';
                     html += '<img src="'+v.goods_thumbnail_url+'">';
                     if (v.hasOwnProperty('unified_tags')){
@@ -161,9 +161,9 @@ function datas_list(data,type){
                     html += '<p><i>销量'+v.sales_tip+'</i><i>'+v.mall_name+'</i></p>';
                 html += '</a>';
                 if (v.hasOwnProperty('coupon_discount') && v.coupon_discount != 0){
-                    html += '<a c href="/go-'+v.goods_id+'/">'+buy+'</a>';
+                    html += '<a c href="/go-'+v.goods_sign+'/">'+buy+'</a>';
                 }else{
-                    html += '<a href="/go-'+v.goods_id+'/">'+buy+'</a>';
+                    html += '<a href="/go-'+v.goods_sign+'/">'+buy+'</a>';
                 }
                 html += '</li>';
             });

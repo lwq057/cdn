@@ -18,15 +18,15 @@ $(".goods-wrapper").hover(function(){gs.autoplay.stop()},function(){gs.autoplay.
 }function datas_list(data,type){var html="";if(data.length==0){return html}switch(type){case"search":$.each(data,function(k,v){html+='<a href="/w-'+k+'/">';
 html+='<img src="'+v+'"><i>'+k+"</i>";html+="</a>"});break;case"category":$.each(data,function(k,v){html+='<a href="/c-'+k+'/">';
 html+='<img src="'+v.p+'"><i>'+v.n+"</i>";html+="</a>"});break;default:$.each(data,function(i,v){html+="<li>";
-html+='<a href="/g-'+v.goods_id+'/">';html+="<i>";html+='<img src="'+v.goods_thumbnail_url+'">';
+html+='<a href="/g-'+v.goods_sign+'/">';html+="<i>";html+='<img src="'+v.goods_thumbnail_url+'">';
 if(v.hasOwnProperty("unified_tags")){html+="<u>优惠 "+v.unified_tags.join(" ")+"</u>"
 }html+="</i>";html+="<em>";var buy="优惠购买";if(v.hasOwnProperty("coupon_discount")&&v.coupon_discount!=0){html+="<b>"+((v.min_group_price-v.coupon_discount)/100).toFixed(1)+"</b><i>券后价</i>";
 buy=(v.coupon_discount/100)+"元优惠券"}else{html+="<b>"+(v.min_group_price/100)+"</b>";
 if(v.min_normal_price==v.min_group_price){html+="<i>低价</i>";buy="低价购买"}else{buy=discount(v.min_group_price,v.min_normal_price);
 html+="<i>"+buy+"</i>";buy=buy+"抢购"}}html+="<s>"+(v.min_normal_price/100)+"</s>";
 html+="</em>";html+="<h4>"+v.goods_name+"</h4>";html+="<p><i>销量"+v.sales_tip+"</i><i>"+v.mall_name+"</i></p>";
-html+="</a>";if(v.hasOwnProperty("coupon_discount")&&v.coupon_discount!=0){html+='<a c href="/go-'+v.goods_id+'/">'+buy+"</a>"
-}else{html+='<a href="/go-'+v.goods_id+'/">'+buy+"</a>"}html+="</li>"});break}return html
+html+="</a>";if(v.hasOwnProperty("coupon_discount")&&v.coupon_discount!=0){html+='<a c href="/go-'+v.goods_sign+'/">'+buy+"</a>"
+}else{html+='<a href="/go-'+v.goods_sign+'/">'+buy+"</a>"}html+="</li>"});break}return html
 }$("small[p]").ready(function(){var pages=$("small[p]");if(pages.length==0){return false
 }var page=parseInt(pages.attr("p"))||0;var max_page=parseInt(pages.attr("m"))||0;
 if(max_page!=0&&page>=max_page){return false}var lists=pages.prev().attr("page",page);

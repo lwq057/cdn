@@ -1,3 +1,11 @@
+var id=null;if(document.querySelector('main>article')){id=document.querySelector('main>article').getAttribute('id');}
+if(id){$.ajax({url:"https://hws.m.taobao.com/cache/desc/5.0?id="+id,timeout:1000,tryCount:0,retryLimit:10,cache:false,async:false,dataType:'jsonp',jsonp:'callback',success:function(result){this.tryCount++;if(result.sellerId){desc(result);}else if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url="https://hws.m.taobao.com/cache/desc/5.0?id="+id;}
+$.ajax(this);return;}},error:function(){this.tryCount++;if(this.url.length>400){this.url="https://hws.m.taobao.com/cache/desc/5.0?id="+id;}
+if(this.tryCount<this.retryLimit){$.ajax(this);}
+return;}});$.ajax({url:'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D',timeout:1000,tryCount:0,retryLimit:10,cache:false,async:false,dataType:'jsonp',jsonp:'callback',success:function(result){this.tryCount++;if(result.data){attr(result.data);}else if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url='https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D';}
+$.ajax(this);return;}},error:function(){this.tryCount++;if(this.url.length>400){this.url='https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D';}
+if(this.tryCount<this.retryLimit){$.ajax(this);}
+return;}});}
 $('a[href^="/0/"]').attr('target','_blank');$('img:not([alt])').each(function(){if($(this).siblings('h3').length>0){$(this).attr('alt',$(this).siblings('h3').text());}else if($(this).siblings('i').length>0){$(this).attr('alt',$(this).siblings('i').text());}else if($('h1').length>0){$(this).attr('alt',$('h1').text());}});if(location.pathname&&location.pathname!='/'){$('body>nav>a').each(function(){if(location.origin+'/'==this.href){return true;}
 if((location.origin+location.pathname).indexOf(this.href)==0){$('body>nav').scrollLeft($(this).offset().left-$(this).width());return false;}});}
 function lazyload_img(){var imgs=document.querySelectorAll('img');for(var i=0;i<imgs.length;i++){if(!imgs[i].getAttribute('data-original-url')&&!imgs[i].getAttribute('data-ll-status')){if(imgs[i].src.indexOf('400x400q90')>0||(imgs[i].src.indexOf('.alicdn.com')==-1||imgs[i].src.indexOf('.tbcdn.cn')==-1)&&imgs[i].src.indexOf('/imgextra/')!=-1){imgs[i].setAttribute('data-original-url',imgs[i].src);}else{imgs[i].setAttribute('data-original-url',imgs[i].src+'_400x400q90');}
@@ -18,14 +26,6 @@ if(JSON.stringify(datas.props2)!="{}"){if(typeof(datas.props2.groupProps)!='unde
 if(datas.props2.importantProps){props_html+='<h4>产品属性</h4>';props_html+='<ul>';$.each(datas.props2.importantProps,function(k,v){props_html+='<li title="'+v['value']+'">'+v['name']+': '+v['value']+'</li>';});props_html+='</ul>';}}
 if(props_html){section.insertAdjacentHTML('beforeend',props_html);}
 lazyload_img();load_viewer();}
-var id=null;if(document.querySelector('main>article')){id=document.querySelector('main>article').getAttribute('id');}
-if(id){$.ajax({url:"https://hws.m.taobao.com/cache/desc/5.0?id="+id,timeout:1000,tryCount:0,retryLimit:10,cache:false,async:false,dataType:'jsonp',jsonp:'callback',success:function(result){this.tryCount++;if(result.sellerId){desc(result);}else if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url="https://hws.m.taobao.com/cache/desc/5.0?id="+id;}
-$.ajax(this);return;}},error:function(){this.tryCount++;if(this.url.length>400){this.url="https://hws.m.taobao.com/cache/desc/5.0?id="+id;}
-if(this.tryCount<this.retryLimit){$.ajax(this);}
-return;}});$.ajax({url:'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D',timeout:1000,tryCount:0,retryLimit:10,cache:false,async:false,dataType:'jsonp',jsonp:'callback',success:function(result){this.tryCount++;if(result.data){attr(result.data);}else if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url='https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D';}
-$.ajax(this);return;}},error:function(){this.tryCount++;if(this.url.length>400){this.url='https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D';}
-if(this.tryCount<this.retryLimit){$.ajax(this);}
-return;}});}
 $('main>article').ready(function(){var action=($('body>main>article address>p em[c]').length>0)?'领券':'购买';if($('body>main>article label[for="model"]').length>0){var model=Math.floor(Math.random()*10)+'.'+$('input[name="model"]').val()+'.:/';$('body>main>article').append('<input id="model" type="checkbox"><dialog><header>淘口令'+action+'</header><section><p>长按或选中右击复制</p><p><b>'+model+'</b></p><p>复制成功打开手机淘宝即可'+action+'</p></section><footer><label id="copymodel"data-clipboard-text="'+model+'">复制</label><label for="model">确定</label></footer></dialog>');$('#copymodel').ready(function(){if($(this).length==0){return false;}
 var copymodel=new ClipboardJS('#copymodel');copymodel.on('success',function(e){document.getElementById('copymodel').innerText='复制成功';$('#copymodel').text('复制成功');});copymodel.on('error',function(e){$('#copymodel').text('复制失败');});});}
 if($('body>main>article label[for="qr"]').length>0){var url=$('input[name="u"]').val();if(url.substr(0,2)=='//'){url='https:'+url;}

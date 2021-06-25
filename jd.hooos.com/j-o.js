@@ -161,7 +161,7 @@ function datas_list(data,type){
                         }
                         html += '<img alt="'+v.title+'" src="'+v.imgList[imgi].imgUrl+'">';
                     }else{
-                        html += '<img alt="'+v.title+'" src="http://misc.360buyimg.com/mtd/pc/index/gb/images/lazyload.gif">';
+                        html += '<img alt="'+v.title+'" src="https://cdn.jsdelivr.net/gh/lwq057/cdn/jd.hooos.com/jd.jpg">';
                     }
                     if (v.content){
                         html += '<q>'+$(v.content).text()+'</q>';

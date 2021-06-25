@@ -689,11 +689,11 @@ if(document.referrer.indexOf(document.domain) == -1){
 }
 
 //网站地图
-// $.ajax({
-//     url:'/?sitemap=true',
-//     cache:true,
-//     async:true
-// });
+$.ajax({
+    url:'/?sitemap=true',
+    cache:true,
+    async:true
+});
 
 console.log("%c\n _	  _  \n| |  | | \n| |__| |  _____    _____    _____   _____ \n|  __  | /  _  \\  /  _  \\  /  _  \\ /  ___\\ \n| |  | ||  |_|  ||  |_|  ||  |_|  |\\___  \\ \n|_|  |_| \\_____/  \\_____/  \\_____/ \\_____/ \n ","color:#e3544c");
 console.log("%c\n欢迎访问虎窝购！\n ","color:#fa7e89");

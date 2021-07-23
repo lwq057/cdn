@@ -1975,6 +1975,7 @@ dialog section>form[f]>div>i>input[type="number"]{
     }
     body>*>div[i]>figure>div>a{
         width: 8rem;
+	min-width: 8rem;
         height: 8rem;
         display: inline-table;
     }

@@ -1755,6 +1755,7 @@ dialog section div[share]>div>div input[type="submit"]{
     }
     body>*>div[i]>figure>div>a{
         width: 8rem;
+	min-width: 8rem;
         height: 8rem;
         display: inline-table;
     }

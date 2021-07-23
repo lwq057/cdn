@@ -1467,6 +1467,7 @@ dialog section div[share]>div>div{
     box-align: center;
     text-align: center;
     overflow: auto;
+    word-break: break-all;
 }
 dialog section div[share]>div>div img{
     max-width: 50%;

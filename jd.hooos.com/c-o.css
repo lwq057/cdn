@@ -36,7 +36,7 @@ html{
 	overflow-x: hidden;
 }
 body{
-	background-color: #f1f1f1;
+	background-color: #f6f5f5;
 	font: 16px Helvetica,Arial,sans-serif;
 	background-attachment: fixed;
 	-webkit-overflow-scrolling:touch;
@@ -74,7 +74,7 @@ body>header>a::after{
     content: '京东优惠';
     font-size: 1rem;
     margin-left: 0.4rem;
-	color: #ec8a85;
+	color: #7c7c7c;
 	float: right;
 }
 

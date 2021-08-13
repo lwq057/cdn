@@ -69,11 +69,12 @@ $('main>article figure').ready(function(){
     if ($('main>article figure img').length == 0){
         return false;
     }
+    window.figure_html = $('main>article figure').html();
     $('main>article figure').addClass('goods-wrapper').parent().addClass('goods-container').scrollLeft(0).css('overflow','hidden');
     $('main>article figure img').addClass('goods-slide');
     $('main>article figure').after('<i class="p"></i>');
 
-    gs = new Swiper('.goods-container',{
+    var gs = new Swiper('.goods-container',{
         wrapperClass : 'goods-wrapper',
         slideClass : 'goods-slide',
         slidesPerView: 'auto',
@@ -515,7 +516,12 @@ $('body>main>article').ready(function(){
                 if (result.content){
                     result.content = result.content.replace(/http:\/\//ig,'https://');
                     result.content = result.content.replace(/\/\/item.jd.com\/([\d]+)\.html/ig,'//'+window.location.host+'/g-$1/');
-                    $('body>main>section>div>div').append(result.content);
+                    if (result.content == '<!--error request-->'){
+                        $('body>main>section>div>div').append(figure_html);
+                    }else{
+                        $('body>main>section>div>div').append(result.content);
+                        figure_html = '';
+                    }
                     if ($('#zbViewWeChatMiniImages').length>0){
                         let imgs = $('#zbViewWeChatMiniImages').attr('value').split(',').map(function(v){
                             return '<img src="https://img1.360buyimg.com/'+v+'">';

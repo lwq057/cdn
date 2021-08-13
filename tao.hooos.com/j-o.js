@@ -472,6 +472,11 @@ function descattr(data) {
         var desc = data.pcDescContent || data.desc;
         if (desc) {
             $('body>main>section>div>div[n]').append(desc).removeAttr('n');
+            $('body>main>section>div>div img').each(function(){
+                if (!this.getAttribute('data-original-url')){
+                    this.setAttribute('data-original-url',this.getAttribute('src'));
+                }
+            });
         }
     }
     if ($('body>main>section>ol[n]').length > 0) {

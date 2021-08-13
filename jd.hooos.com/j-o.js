@@ -183,7 +183,7 @@ function datas_list(data,type){
                         if (v.actStatus == 1){
                             html += '<i cd="'+v.startTime+'">即将开始</i>';
                         }else if (v.actStatus == 2){
-                            html += '<i cd="'+v.endTime+'">活动中</i>';
+                            html += '<i cd="'+v.endTime+'" c>活动中</i>';
                         }else{
                             html += '<i>已结束</i>';
                         }

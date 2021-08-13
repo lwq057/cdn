@@ -486,13 +486,17 @@ function descattr(data) {
                 attr += '<li>' + v['name'] + '：' + v['value'] + '</li>';
             });
         } else if (data.attr) {
-            $.each(data.attr[0], function (i, v) {
-                $.each(v, function (ii, vv) {
-                    $.each(vv, function (iii, vvv) {
-                        attr += '<li>' + iii + '：' + vvv + '</li>';
+            if (typeof data.attr == 'object'){
+                $.each(data.attr[0], function (i, v) {
+                    $.each(v, function (ii, vv) {
+                        $.each(vv, function (iii, vvv) {
+                            attr += '<li>' + iii + '：' + vvv + '</li>';
+                        });
                     });
                 });
-            });
+            }else{
+                attr = data.attr;
+            }
         }else if (data.props) {
             if (data.props.groupProps && data.props.groupProps != 'undefined'){
                 $.each(data.props.groupProps[0], function (k, v) {
@@ -522,13 +526,12 @@ function descattr(data) {
                     });
                 }
             }
-        }else if (data.attr_html) {
-            attr = data.attr_html;
         }
         if (attr) {
             $('body>main>section>ol[n]').append(attr).removeAttr('n');
         }
     }
+    lazyload_run();
     load_viewer();
 }
 
@@ -603,7 +606,7 @@ function get_desc() {
 // 替补属性
 function alternate_attr() {
     var attr = $('body>main>article>div[info]>p').html().replace(/i>/g, 'li>');
-    descattr({ attr_html: attr });
+    descattr({ attr: attr });
 }
 
 // 获取属性

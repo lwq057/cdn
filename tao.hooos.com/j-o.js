@@ -1,5 +1,4 @@
 
-
 //链接处理
 function links(){
     $('a[href^="/go?"]').attr('target','_blank');
@@ -369,11 +368,16 @@ $('body>main>article').ready(function(){
 
         s['num'] = $('body>main>article>div[info]>b>i').map(function(){
             return $(this).text();
-        }).get().join(',') || '';
+        }).get().join('、') || '';
         s['model'] = $('input[name="model"]').val() || '';
 
         var s_t = '0.0<br><img src="'+s['img']+'"><br>';
         s_t += s['title']+'<br>';
+
+        var title = $('body>main>article>div[info]>h3').text() || $('body>main>article>div[info]>h1').text() || '';
+        if (title){
+            s_t += title + '<br>';
+        }
         if (s['num']){
             s_t += '[ '+s['num']+' ]<br>';
         }
@@ -396,9 +400,9 @@ $('body>main>article').ready(function(){
             s_t += '【淘口令】'+s['model']+'<br>';
             s_t +='(复制此消息，打开淘宝或天猫APP，即可'+action+')<br>';
         }
-        if (s['tag']){
-            s_t += '[ '+s['tag']+' ]<br>';
-        }
+        // if (s['tag']){
+        //     s_t += '[ '+s['tag']+' ]<br>';
+        // }
         s_t +='详情：'+window.location.href;
 
         $('body>main>article').append('<input id="share" type="checkbox"><dialog><header>分享文字或图片</header><section><div share><input tab id="share_type" type="checkbox"><div tab><p>长按分享或保存图片发送给好友</p><iframe id="share_img" width="100%" height="100%" data-src="'+img_src+'" src="'+s['img']+'"></iframe></div><div tab><div id="share_text">'+s_t+'<br><input id="copysharetext" type="submit" value="点击复制"></div></div></div></section><footer><label for="share_type">图片/文字</label> <label for="share">收起窗口</label></footer></dialog>');
@@ -455,7 +459,7 @@ function dav(q){
                         $('main>article figure img').each(function(){
                             var src = $(this).attr('data-original-url') || $(this).attr('src');
                             if(desc.indexOf(src)==-1){
-                                desc += '<img src="'+src+'">';
+                                desc += '<img data-original-url="'+src+'" src="'+src+'">';
                             }
                         });
                         descattr({

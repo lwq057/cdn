@@ -261,6 +261,7 @@ $('body').ready(function(){
 				dataType:'jsonp',
 				jsonp:'callback',
 				dataFilter: function (data) {
+					console.log(data);
 					if (data.toString().indexOf('location') >= 0) {
 						return false;
 					}

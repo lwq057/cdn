@@ -36,14 +36,14 @@ function lazyload_img(v){
 			data_dom.find("img")[i].setAttribute('class', 'l' );
 		});
 		//data_dom.find("img").removeAttr("src");
-		data_dom.find("img").attr('src','/static/lazyload.gif');
+		data_dom.find("img").attr('src','https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hvcis.com/lazyload.gif');
 		lazyload_run();
 		return data_dom;
 	}else{
 		$("div img.l").each(function(i){
 			if (!$(this).attr('data-src')){
 				$(this).attr('data-src',$(this).attr('src'));
-				$(this).attr('src','/static/lazyload.gif');
+				$(this).attr('src','https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hvcis.com/lazyload.gif');
 				//$(this).removeAttr("src");
 			}
 		});
@@ -79,7 +79,7 @@ $('.exhibition').ready(function(){
 			$(".exhibition .list img").each(function(i){
 				$(this).addClass('sl');
 				$(this).attr('data-src',$(this).attr('src'));
-				$(this).attr('src','./static/lazyload.gif');
+				$(this).attr('src','https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hvcis.com/lazyload.gif');
 			});
 			new Swiper('.exhibition .body',{
 				lazy: {
@@ -261,7 +261,7 @@ $('body').ready(function(){
 				dataType:'jsonp',
 				jsonp:'callback',
 				dataFilter: function (data) {
-					if (data.indexOf('location') >= 0) {
+					if (data.toString().indexOf('location') >= 0) {
 						return false;
 					}
 					return data;

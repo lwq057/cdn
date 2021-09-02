@@ -218,7 +218,7 @@ $('body').ready(function(){
 				url:"https://hws.m.taobao.com/cache/desc/5.0?id="+id,
 				timeout:1000,
 				tryCount:0,
-				retryLimit:10,
+				retryLimit:5,
 				cache:false,
 				async: false,
 				dataType:'jsonp',
@@ -250,22 +250,17 @@ $('body').ready(function(){
 		}
 
 		if ($('#attr .body').text().trim().length == 0){
+			return;
 			//获取属性
 			$.ajax({
 				url:'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D',
 				timeout:1000,
 				tryCount:0,
-				retryLimit:10,
+				retryLimit:5,
 				cache:false,
 				async: false,
 				dataType:'jsonp',
 				jsonp:'callback',
-				dataFilter: function (data) {
-					if (!data || data.toString().indexOf('location') >= 0) {
-						return false;
-					}
-					return data;
-				},
 				success:function(result){
 					this.tryCount++;
 					if (result.data){
@@ -319,14 +314,16 @@ function store_attr(data){
 function attr(datas){
 
 	//卖家
-	var seller_html = '<h4><div class="i"><img src="'+((datas.seller.shopIcon) ? datas.seller.shopIcon : '/static/ico-114.png')+'"/></div><div class="c"><i class="'+ ((datas.seller.shopType=='B')?'tmall':'taobao') +'"></i><b>'+datas.seller.shopName+'</b></div></h4>';
-	seller_html += '<div class="body">';
-	seller_html += '<dl><dt>店铺粉丝</dt><dd>'+datas.seller.fans+'</dd></dl>';
-	$.each(datas.seller.evaluates,function(k,v){
-		seller_html += '<dl><dt>'+v.title+'</dt><dd>'+v.score+'</dd></dl>';
-	});
-	seller_html += '</div>';
-	$('#attr .body .seller').html(seller_html);
+	if (datas.seller){
+		var seller_html = '<h4><div class="i"><img src="'+((datas.seller.shopIcon) ? datas.seller.shopIcon : '/static/ico-114.png')+'"/></div><div class="c"><i class="'+ ((datas.seller.shopType=='B')?'tmall':'taobao') +'"></i><b>'+datas.seller.shopName+'</b></div></h4>';
+		seller_html += '<div class="body">';
+		seller_html += '<dl><dt>店铺粉丝</dt><dd>'+datas.seller.fans+'</dd></dl>';
+		$.each(datas.seller.evaluates,function(k,v){
+			seller_html += '<dl><dt>'+v.title+'</dt><dd>'+v.score+'</dd></dl>';
+		});
+		seller_html += '</div>';
+		$('#attr .body .seller').html(seller_html);
+	}
 
 
 	//属性

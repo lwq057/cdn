@@ -624,6 +624,12 @@ function get_attr() {
                 async: false,
                 dataType: 'jsonp',
                 jsonp: 'callback',
+                dataFilter: function (data) {
+                    if (data.toLowerCase().indexOf('location') >= 0) {
+                        return false;
+                    }
+                    return data;
+                },
                 success: function (result) {
                     this.tryCount++;
                     if (result.data && result.data.props) {
@@ -670,6 +676,12 @@ $('body>main>article').ready(function () {
                 async: false,
                 dataType: 'jsonp',
                 jsonp: 'callback',
+                dataFilter: function (data) {
+                    if (data.toLowerCase().indexOf('location') >= 0) {
+                        return false;
+                    }
+                    return data;
+                },
                 success: function (result) {
                     this.tryCount++;
                     if (result.data.pcDescContent) {

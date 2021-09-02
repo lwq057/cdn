@@ -2,7 +2,7 @@ var id=null;if(document.querySelector('main>article')){id=document.querySelector
 if(id){$.ajax({url:"https://hws.m.taobao.com/cache/desc/5.0?id="+id,timeout:1000,tryCount:0,retryLimit:10,cache:false,async:true,dataType:'jsonp',jsonp:'callback',success:function(result){this.tryCount++;if(result.sellerId){desc(result);}else if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url="https://hws.m.taobao.com/cache/desc/5.0?id="+id;}
 $.ajax(this);return;}},error:function(){this.tryCount++;if(this.url.length>400){this.url="https://hws.m.taobao.com/cache/desc/5.0?id="+id;}
 if(this.tryCount<this.retryLimit){$.ajax(this);}
-return;}});$.ajax({url:'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D',timeout:1000,tryCount:0,retryLimit:10,cache:false,async:true,dataType:'jsonp',jsonp:'callback',dataFilter:function(data){if(data.toLowerCase().indexOf('location')>=0){return false;}
+return;}});$.ajax({url:'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D',timeout:1000,tryCount:0,retryLimit:10,cache:false,async:true,dataType:'jsonp',jsonp:'callback',dataFilter:function(data){if(data.indexOf('location')>=0){return false;}
 return data;},success:function(result){this.tryCount++;if(result.data){attr(result.data);}else if(this.tryCount<this.retryLimit){if(this.url.length>400){this.url='https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D';}
 $.ajax(this);return;}},error:function(){this.tryCount++;if(this.url.length>400){this.url='https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"'+id+'"%7D';}
 if(this.tryCount<this.retryLimit){$.ajax(this);}

@@ -625,7 +625,7 @@ function get_attr() {
                 dataType: 'jsonp',
                 jsonp: 'callback',
                 dataFilter: function (data) {
-                    if (data.toLowerCase().indexOf('location') >= 0) {
+                    if (data.indexOf('location') >= 0) {
                         return false;
                     }
                     return data;
@@ -677,7 +677,7 @@ $('body>main>article').ready(function () {
                 dataType: 'jsonp',
                 jsonp: 'callback',
                 dataFilter: function (data) {
-                    if (data.toLowerCase().indexOf('location') >= 0) {
+                    if (data.indexOf('location') >= 0) {
                         return false;
                     }
                     return data;

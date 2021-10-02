@@ -661,6 +661,8 @@ $('body>main>article').ready(function () {
     var id = $('input[name="id"]').val();
     if (id) {
         if (($('body>main>section>div>div[n]').length > 0) || ($('body>main>section>ol[n]').length > 0)) {
+            dav({ d: 1, a: 1, v: 1 });
+            return;
             var api = 'https://h5api.m.taobao.com/h5/mtop.taobao.detail.getdesc/6.0/?data={%22id%22:%22' + id + '%22}';
             $.ajax({
                 url: api,

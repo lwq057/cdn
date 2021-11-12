@@ -1413,9 +1413,13 @@ input[type="checkbox"]~dialog{
 }
 input[type="checkbox"]:checked+dialog{
     z-index: 10;
+    display: block !important;
+}
+input[type="checkbox"][checked]+dialog{
+    z-index: 10;
     display: block;
 }
-input[type="checkbox"]:checked+dialog~*[dialog-full]{
+input[type="checkbox"]:checked+dialog~*[dialog-full],input[type="checkbox"][checked]+dialog~*[dialog-full]{
     display: block;
 	position: fixed;
 	width: 100%;
@@ -1424,7 +1428,7 @@ input[type="checkbox"]:checked+dialog~*[dialog-full]{
 	top: 0;
 	z-index: 9;
 	background-color: #fff;
-	opacity: 0.96;
+	opacity: 0.98;
 }
 dialog section input[tab]{
     display: none;

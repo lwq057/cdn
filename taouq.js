@@ -39,39 +39,38 @@ if (id) {
         }
     });
 
-    return;
-    $.ajax({
-        url: 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D',
-        timeout: 1000,
-        tryCount: 0,
-        retryLimit: 10,
-        cache: false,
-        async: true,
-        dataType: 'jsonp',
-        jsonp: 'callback',
-        success: function (result) {
-            this.tryCount++;
-            if (result.data) {
-                attr(result.data);
-            } else if (this.tryCount < this.retryLimit) {
-                if (this.url.length > 400) {
-                    this.url = 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D';
-                }
-                $.ajax(this);
-                return;
-            }
-        },
-        error: function () {
-            this.tryCount++;
-            if (this.url.length > 400) {
-                this.url = 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D';
-            }
-            if (this.tryCount < this.retryLimit) {
-                $.ajax(this);
-            }
-            return;
-        }
-    });
+    // $.ajax({
+    //     url: 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D',
+    //     timeout: 1000,
+    //     tryCount: 0,
+    //     retryLimit: 10,
+    //     cache: false,
+    //     async: true,
+    //     dataType: 'jsonp',
+    //     jsonp: 'callback',
+    //     success: function (result) {
+    //         this.tryCount++;
+    //         if (result.data) {
+    //             attr(result.data);
+    //         } else if (this.tryCount < this.retryLimit) {
+    //             if (this.url.length > 400) {
+    //                 this.url = 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D';
+    //             }
+    //             $.ajax(this);
+    //             return;
+    //         }
+    //     },
+    //     error: function () {
+    //         this.tryCount++;
+    //         if (this.url.length > 400) {
+    //             this.url = 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D';
+    //         }
+    //         if (this.tryCount < this.retryLimit) {
+    //             $.ajax(this);
+    //         }
+    //         return;
+    //     }
+    // });
 }
 
 //链接处理

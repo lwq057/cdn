@@ -38,6 +38,8 @@ if (id) {
             return;
         }
     });
+    
+    attr(false);
 
     // $.ajax({
     //     url: 'https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B"itemNumId"%3A"' + id + '"%7D',
@@ -167,6 +169,9 @@ function attr(datas) {
         return false;
     }
     section.innerHTML = '';
+    if (datas == false){
+        return false;
+    }
 
     //商品评价
     var rate_html = '';

@@ -442,8 +442,18 @@ $('body').ready(function () {
 
     //baidu提交
     !function () { var e = /([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi, r = window.location.href, t = document.referrer; if (!e.test(r)) { var o = "https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif"; t ? (o += "?r=" + encodeURIComponent(document.referrer), r && (o += "&l=" + r)) : r && (o += "?l=" + r); var i = new Image; i.src = o } }(window);
-
-    //cnzz统计
-    $("body>footer").append('<span id="cnzz_stat_icon_1279114273" style="display:none">cnzz</span>');
-    var cnzz_s_tag = document.createElement('script'); cnzz_s_tag.type = 'text/javascript'; cnzz_s_tag.async = true; cnzz_s_tag.charset = 'utf-8'; cnzz_s_tag.src = 'https://c.cnzz.com/stat.php?id=1279114273&async=1&online=2'; var root_s = document.getElementsByTagName('script')[0]; root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
 });
+
+// analytics
+(function () {
+    var analytics = document.createElement('script');
+    analytics.type = 'text/javascript';
+    analytics.async = true;
+    analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-CHX8GX3WBL';
+    var root_s = document.getElementsByTagName('script')[0];
+    root_s.parentNode.insertBefore(analytics, root_s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CHX8GX3WBL');
+})();

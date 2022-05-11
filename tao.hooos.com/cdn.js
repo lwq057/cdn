@@ -851,7 +851,7 @@ $('body>main>article>q>label').ready(function () {
 });
 
 //尾部信息
-$('body>footer').prepend('<p>工信部ICP备案：闽ICP备12002928号-2 &nbsp;&nbsp;&nbsp; 公安部备案：闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a> &nbsp;&nbsp;&nbsp; <span id="cnzz_stat_icon_1253303069">CNZZ</span></p>');
+$('body>footer').prepend('<p>工信部ICP备案：闽ICP备12002928号-2 &nbsp;&nbsp;&nbsp; 公安部备案：闽公网安备 35042502000103号 &nbsp;&nbsp;&nbsp; <a rel="external nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=12692752&amp;site=tao.hooos.com&amp;menu=yes" target="_blank" title="联系QQ">联系我们</a></p>');
 
 
 //搜索提示改变

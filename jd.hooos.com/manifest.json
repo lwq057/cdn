@@ -18,21 +18,11 @@
 	"incognito": "not_allowed",
 	"offline_enabled": true,
 	"icons": {
-		"16": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"32": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"36": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"48": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"72": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"96": "hhttps://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"114": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"128": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"144": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"256": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
-		"512": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg"
+		"any": "https://cdn.jsdelivr.net/gh/lwq057/cdn/jd.hooos.com/logo.svg"
 	},
 	"browser_action":{
 		"browser_style": false,
-		"default_icon": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/logo.svg",
+		"default_icon": "https://cdn.jsdelivr.net/gh/lwq057/cdn/jd.hooos.com/logo.svg",
 		"default_title": "虎窝拼",
 		"default_popup": "https://jd.hooos.com/"
 	},
@@ -42,7 +32,7 @@
 			"name": "虎窝购",
 			"keyword": "商品关键词、商品标题、商品ID、商品链接",
 			"search_url": "https://jd.hooos.com/w/?w={searchTerms}",
-			"favicon_url": "https://cdn.jsdelivr.net/gh/lwq057/cdn@5.0/jd.hooos.com/favicon.ico",
+			"favicon_url": "https://cdn.jsdelivr.net/gh/lwq057/cdn/jd.hooos.com/favicon.ico",
 			"suggest_url": "https://suggest.taobao.com/sug?code=utf-8&q={searchTerms}",
 			"encoding": "UTF-8",
 			"is_default": true

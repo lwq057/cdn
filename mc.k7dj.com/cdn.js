@@ -1215,7 +1215,7 @@ function newpage(){
 					document.body.scrollTop=document.documentElement.scrollTop = 0;
                 }
                 cmpt_http();
-                cnzz();
+                analytics();
             }
         });
     }
@@ -1521,15 +1521,20 @@ function advert_data(){
 }
 
 // analytics
-(function () {
-    var analytics = document.createElement('script');
-    analytics.type = 'text/javascript';
-    analytics.async = true;
-    analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-VX29W4Q2L1';
+function analytics(){
+    if (document.getElementById('analytics')){
+        document.getElementById('analytics').remove();
+        var analytics_js = document.querySelectorAll('script[src*="googletagmanager.com"]');
+        for (var i=0;i < analytics_js.length;i++){
+            analytics_js[i].remove();
+        }
+    }
+    var analyticsscript = document.createElement('script');
+    analyticsscript.type = 'text/javascript';
+    analyticsscript.async = true;
+    analyticsscript.id = 'analytics';
+    analyticsscript.src = 'https://www.googletagmanager.com/gtag/js?id=G-GX60JGL6QC';
     var root_s = document.getElementsByTagName('script')[0];
-    root_s.parentNode.insertBefore(analytics, root_s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VX29W4Q2L1');
-})();
+    root_s.parentNode.insertBefore(analyticsscript, root_s);
+}
+analytics();

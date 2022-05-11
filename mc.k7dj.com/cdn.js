@@ -1533,8 +1533,13 @@ function analytics(){
     analyticsscript.type = 'text/javascript';
     analyticsscript.async = true;
     analyticsscript.id = 'analytics';
-    analyticsscript.src = 'https://www.googletagmanager.com/gtag/js?id=G-GX60JGL6QC';
+    analyticsscript.src = 'https://www.googletagmanager.com/gtag/js?id=G-VX29W4Q2L1';
     var root_s = document.getElementsByTagName('script')[0];
     root_s.parentNode.insertBefore(analyticsscript, root_s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VX29W4Q2L1');
 }
 analytics();

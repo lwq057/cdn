@@ -25,6 +25,8 @@ if (id) {
                 }
                 $.ajax(this);
                 return;
+            } else {
+                alternate_desc();
             }
         },
         error: function () {
@@ -34,6 +36,8 @@ if (id) {
             }
             if (this.tryCount < this.retryLimit) {
                 $.ajax(this);
+            } else {
+                alternate_desc();
             }
             return;
         }
@@ -138,6 +142,18 @@ function load_viewer() {
 }
 load_viewer();
 
+// 替补详情
+function alternate_desc() {
+    var desc = '';
+    $('article figure img').each(function () {
+        var src = $(this).attr('data-original-url') || $(this).attr('src');
+        if (desc.indexOf(src) == -1) {
+            desc += '<img data-original-url="' + src + '" src="' + src + '">';
+        }
+    });
+    $('body>main>article>section>div').html(desc);
+    load_viewer();
+}
 
 //读取描述
 function desc(data) {

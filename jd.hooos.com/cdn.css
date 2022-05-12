@@ -2462,7 +2462,7 @@ dialog section>form[f]>div>i>input[type="number"] {
     }
 
     body>main>section>div>label{
-        margin: 0 0 1rem 0;
+        margin: 0 0 1% 0;
         padding: 0.6rem 0;
     }
 

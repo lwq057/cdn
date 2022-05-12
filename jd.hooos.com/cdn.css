@@ -1105,7 +1105,7 @@ body>main>section>ol {
     top: 4rem;
     background-color: #f7f7f7;
     padding: 0 1%;
-    margin: 1% 0;
+    margin: 1rem 0;
 }
 
 body>main>section>ol>li {
@@ -2453,6 +2453,7 @@ dialog section>form[f]>div>i>input[type="number"] {
         position: static;
         display: inline-block;
         background-color: #fff;
+        margin: 1% 0;
     }
 
     body>main>section>ol>li {

@@ -623,7 +623,7 @@ function get_desc() {
                 url: api,
                 timeout: 1000,
                 tryCount: 0,
-                retryLimit: 5,
+                retryLimit: 3,
                 cache: false,
                 async: false,
                 dataType: 'jsonp',

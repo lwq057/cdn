@@ -82,7 +82,7 @@ function lazyload_img() {
             if ((imgs[i].src.indexOf('.gif') != -1 || imgs[i].src.indexOf('.alicdn.com') == -1 || imgs[i].src.indexOf('.tbcdn.cn') == -1) && imgs[i].src.indexOf('/imgextra/') != -1) {
                 imgs[i].setAttribute('data-original-url', imgs[i].src);
             } else {
-                imgs[i].setAttribute('data-original-url', imgs[i].src + '_300x300q90');
+                imgs[i].setAttribute('data-original-url', imgs[i].src + '_400x400q90');
             }
             imgs[i].src = cdn_path + 'lazyload.gif';
         }
@@ -616,7 +616,7 @@ function alternate_desc() {
             desc += '<img data-original-url="' + src + '" src="' + src + '">';
         }
     });
-    descattr({ desc: desc.replaceAll('_300x300q90', '') });
+    descattr({ desc: desc.replaceAll('_400x400q90', '') });
 }
 
 // 获取详情
@@ -788,7 +788,7 @@ function load_viewer() {
                     lazyload_run();
                 }, view: function (o) {
                     var url = o.detail.image.src;
-                    o.detail.image.src = url.replace('_300x300q90', '');
+                    o.detail.image.src = url.replace('_400x400q90', '');
                 }
             });
         }

@@ -11,42 +11,42 @@
 	"background_color": "#fff",
 	"icons": [
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-32.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-32.png",
 			"type": "image/png",
 			"sizes": "32x32"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-36.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-36.png",
 			"type": "image/png",
 			"sizes": "36x36"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-48.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-48.png",
 			"type": "image/png",
 			"sizes": "48x48"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-72.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-72.png",
 			"type": "image/png",
 			"sizes": "72x72"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-96.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-96.png",
 			"type": "image/png",
 			"sizes": "96x96"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-114.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-114.png",
 			"type": "image/png",
 			"sizes": "114x114"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-256.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-256.png",
 			"type": "image/png",
 			"sizes": "256x256"
 		},
 		{
-			"src": "https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/ico-512.png",
+			"src": "https://lwq057.github.io/cdn/tao.hooos.com/ico-512.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		}

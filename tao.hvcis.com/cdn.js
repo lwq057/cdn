@@ -115,12 +115,12 @@ function lazyload_img(v) {
 	}
 	lazyload_run();
 }
+lazyload_img();
 
 //延迟加载
 var lazyloads;
 function lazyload_run() {
 	if (typeof (window.lazyloads) !== 'object') {
-		lazyload_img();
 		window.lazyloads = new LazyLoad({
 			elements_selector: 'img',
 			cancel_on_exit: true,
@@ -132,7 +132,6 @@ function lazyload_run() {
 		window.lazyloads.update();
 	}
 };
-lazyload_run();
 
 
 //展览幻灯片

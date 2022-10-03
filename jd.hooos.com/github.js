@@ -458,7 +458,7 @@ function datas_list(data,type){
         }
 
         var image1 = new Image();
-        image1.src = 'https://lwq057.github.io/cdn/jd.hooos.com/wx.png';
+        image1.src = 'https://lwq057.github.io/cdn/jd.hooos.com/jd.png';
         image1.onload = function(){
             op.text = url;
             if (is_pc){
@@ -466,7 +466,7 @@ function datas_list(data,type){
             }else{
                 op.render = 'image';
             }
-            $("#q1").qrcode(op).append('<p>[微信二维码] 使用微信、微博、浏览器等APP扫码'+action+'</p>');
+            $("#q1").qrcode(op).append('<p>[京东二维码] 使用京东、微信、微博、浏览器等APP扫码'+action+'</p>');
         }
 
         var image2 = new Image();

@@ -1642,12 +1642,12 @@ div[c]{
     counter-reset: number;
 }
 div[c]>p{
-	font-size: 100%;
+    font-size: 100%;
 	border-bottom: 1px solid #f4f4f4;
-	padding: 0 0 1% 0;
+	padding: 0 1.2% 1% 1.2%;
 	margin: 1% 0 0 0;
 	line-height: 2;
-    color: #444;
+	color: #444;
 }
 div[c] p::before{
 	counter-increment: number;

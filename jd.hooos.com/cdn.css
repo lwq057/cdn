@@ -1638,6 +1638,22 @@ body>*>div>p>* {
     max-width: 100%;
 }
 
+div[c]{
+    counter-reset: number;
+}
+div[c]>p{
+	font-size: 100%;
+	border-bottom: 1px solid #f4f4f4;
+	padding: 0 0 1% 0;
+	margin: 1% 0 0 0;
+	line-height: 2;
+    color: #444;
+}
+div[c] p::before{
+	counter-increment: number;
+	content: '买家' counter(number) '：';
+	color: #999;
+}
 
 body>footer {
     width: 100%;

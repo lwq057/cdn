@@ -271,7 +271,8 @@ $('header .search input[type="search"]').bind('keypress', function (event) {
 	var is_cache = parseInt($('.goods').attr("data-cache"));
 	var sellerid = $('.goods').attr("data-sellerid");
 
-	if (id) {
+	if (parseInt(id)) {
+        id = parseInt(id);
 
 		if ($('#desc .body[n]').length > 0) {
 			//获取详情
@@ -352,7 +353,9 @@ $('header .search input[type="search"]').bind('keypress', function (event) {
 		}
 
 
-	}
+	}else if(id.indexOf('-')){
+        alternate_desc();
+    }
 
 })();
 

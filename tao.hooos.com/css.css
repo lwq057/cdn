@@ -60,7 +60,7 @@ body {
     -webkit-overflow-scrolling: touch;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url(bj.png);
+    background-image: url(https://cdn.hooos.com/tao/bj.png);
     padding: 0 !important;
 }
 
@@ -373,11 +373,11 @@ body>main>*>ul>li>a>p {
 }
 
 body>main>*>ul>li>a>p[m] {
-    background-image: url(tmall.png);
+    background-image: url(https://cdn.hooos.com/tao/tmall.png);
 }
 
 body>main>*>ul>li>a>p[b] {
-    background-image: url(tao.png);
+    background-image: url(https://cdn.hooos.com/tao/tao.png);
 }
 
 body>main>*>ul>li>a>p>i {
@@ -756,11 +756,11 @@ body>main>article>div[info]>h1::before {
 }
 
 body>main>article>div[info]>h1[m]::before {
-    background-image: url(tmall.png);
+    background-image: url(https://cdn.hooos.com/tao/tmall.png);
 }
 
 body>main>article>div[info]>h1[b]::before {
-    background-image: url(tao.png);
+    background-image: url(https://cdn.hooos.com/tao/tao.png);
 }
 
 body>main>article>div[info]>h2,

@@ -18,7 +18,7 @@
 ;
 
 // CDN路径
-var cdn_path = 'https://cdn.jsdelivr.net/gh/lwq057/cdn/tao.hooos.com/';
+var cdn_path = 'https://cdn.hooos.com/tao/';
 
 //链接处理
 function links() {

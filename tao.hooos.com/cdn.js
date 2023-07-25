@@ -58,15 +58,15 @@ if (!('classList' in document.documentElement)) {
 // CDN路径
 var cdn_path = '/static/';
 
-if (document.currentScript){
-    var url = document.currentScript.src;
-    var lastSlashIndex = url.lastIndexOf('/');
-    cdn_path = url.substring(0, lastSlashIndex + 1);
-}else{
-    var url = document.querySelector('script').src;
-    var lastSlashIndex = url.lastIndexOf('/');
-    cdn_path = url.substring(0, lastSlashIndex + 1);
-}
+// if (document.currentScript){
+//     var url = document.currentScript.src;
+//     var lastSlashIndex = url.lastIndexOf('/');
+//     cdn_path = url.substring(0, lastSlashIndex + 1);
+// }else{
+//     var url = document.querySelector('script').src;
+//     var lastSlashIndex = url.lastIndexOf('/');
+//     cdn_path = url.substring(0, lastSlashIndex + 1);
+// }
 
 // 图片延迟加载
 function lazyload(eles, src) {

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="applicable-device" content="pc,mobile">
+<title>TAO</title>
+</head>
+<body style="margin:0;background-color:#fff;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
+<script src="https://lib.baomitu.com/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://lib.baomitu.com/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
+<script src="https://lib.baomitu.com/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+	h1 {
+		background-color: #ff666d;
+		background: -moz-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+		background: -webkit-gradient(linear, left top, left right, color-stop(0, #fa4dbe), color-stop(100%, #fbaa58));
+		background: -webkit-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+		background: -o-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+		background: -ms-linear-gradient(left, #fa4dbe 0, #fbaa58 100%);
+		background: linear-gradient(to left, #fa4dbe 0, #fbaa58 100%);
+		color: #fff;
+		height: 3rem;
+		line-height: 3rem;
+		font-size: 1rem;
+		height: 10vw;
+		line-height: 10vw;
+		margin: 0;
+		text-align: center;
+		padding: 0 1rem;
+		font-size: 4vw;
+		overflow: hidden
+	}
+
+	#body {
+		background-color: #fff
+	}
+
+	#box {
+		width: 100%;
+		position: relative;
+		padding-top: 60%
+	}
+
+	#box #goods_img,
+	#box #qrcode,
+	#box p {
+		position: absolute;
+		top: 0;
+		box-sizing: border-box
+	}
+
+	#box img {
+		width: 60%;
+		height: 100%;
+		left: 0;
+		padding: 1rem 0 0 1rem;
+		padding: 2vw 0 0 2vw
+	}
+
+	#box #qrcode,
+	#box p {
+		width: 40%;
+		height: auto;
+		right: 0;
+		padding: 1rem;
+		padding: 2vw
+	}
+
+	#box #qrcode canvas {
+		width: 100%;
+		height: auto;
+		position: initial
+	}
+
+	#box #qrcode img {
+		width: 100%;
+		height: auto;
+		position: initial;
+		padding: 0;
+	}
+
+	#box p {
+		top: 65%;
+		height: 35%;
+		text-align: center;
+		margin: 0;
+		padding: .8rem 1rem;
+		padding: 1.8vw 2vw;
+		font-size: .8rem;
+		font-size: 3.4vw;
+		line-height: 3rem;
+		line-height: 6vw;
+		color: #404040;
+		overflow: hidden
+	}
+
+	h2,
+	h3 {
+		margin: 1rem 0 0 0;
+		margin: 2vw 0 0 0;
+		background-color: #fff0f0;
+		background: -moz-linear-gradient(left, #fde6f5 0, #fff0e0 100%);
+		background: -webkit-gradient(linear, left top, left right, color-stop(0, #fde6f5), color-stop(100%, #fff0e0));
+		background: -webkit-linear-gradient(left, #fde6f5 0, #fff0e0 100%);
+		background: -o-linear-gradient(left, #fde6f5 0, #fff0e0 100%);
+		background: -ms-linear-gradient(left, #fde6f5 0, #fff0e0 100%);
+		background: linear-gradient(to left, #fde6f5 0, #fff0e0 100%);
+		color: #fff;
+		padding: 1rem;
+		padding: 2vw;
+		display: table;
+		width: 100%;
+		box-sizing: border-box
+	}
+
+	h2 span {
+		font-size: 1rem;
+		height: 2.5rem;
+		line-height: 2.5rem;
+		font-size: 4vw;
+		height: 6vw;
+		line-height: 6vw;
+		display: block;
+		float: right;
+		color: #fb7593
+	}
+
+	h2 span i {
+		background-color: #f98288;
+		background: -moz-linear-gradient(left, #ff5e5e 0, #ff927c 100%);
+		background: -webkit-gradient(linear, left top, left right, color-stop(0, #ff5e5e), color-stop(100%, #ff927c));
+		background: -webkit-linear-gradient(left, #ff5e5e 0, #ff927c 100%);
+		background: -o-linear-gradient(left, #ff5e5e 0, #ff927c 100%);
+		background: -ms-linear-gradient(left, #ff5e5e 0, #ff927c 100%);
+		background: linear-gradient(to left, #ff5e5e 0, #ff927c 100%);
+		color: #fff;
+		border-radius: 3px;
+		font-size: .8rem;
+		padding: 0 .4rem;
+		height: 1.4rem;
+		line-height: 1.4rem;
+		margin: .6rem .4rem;
+		font-size: 2vw;
+		padding: 0 1.2vw;
+		height: 4vw;
+		line-height: 4vw;
+		margin: 1vw;
+		display: block;
+		font-style: initial;
+		float: right
+	}
+
+	h2 span:first-child {
+		float: left
+	}
+
+	h3 {
+		display: block;
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		margin: 0;
+		text-align: center;
+		padding: 0 0 1.5rem 0;
+		padding: 0 0 3vw 0;
+		color: #f98288;
+		font-size: .8rem;
+		font-size: 2.8vw
+	}
+
+	h3 span {
+		display: inline-block;
+		line-height: 1rem;
+		line-height: 1vw;
+		border: 1px solid #f98288;
+		color: #f98288;
+		padding: .2rem .4rem;
+		padding: 1vw;
+		margin: .2rem;
+		margin: .3vw .6vw;
+		border-radius: 3px;
+		font-size: .8rem;
+		font-size: 1.9vw;
+		box-sizing: border-box;
+		text-align: center
+	}
+
+	.sk {
+		margin: auto;
+		width: 100%;
+		text-align: center;
+		position: fixed;
+		top: 0;
+		padding: 24% 0;
+		height: 100%;
+		background-color: rgba(0, 0, 0, .3)
+	}
+
+	.sk .sk-c {
+		width: 2.8rem;
+		height: 2.8rem;
+		background-color: #fa778f;
+		border-radius: 100%;
+		display: inline-block;
+		-webkit-animation: sk 1.4s ease-in-out 0s infinite both;
+		animation: sk 1.4s ease-in-out 0s infinite both
+	}
+
+	.sk .sk1 {
+		-webkit-animation-delay: -.32s;
+		animation-delay: -.32s
+	}
+
+	.sk .sk2 {
+		-webkit-animation-delay: -.16s;
+		animation-delay: -.16s
+	}
+
+	@-webkit-keyframes sk {
+
+		0%,
+		100%,
+		80% {
+			-webkit-transform: scale(0);
+			transform: scale(0)
+		}
+
+		40% {
+			-webkit-transform: scale(1);
+			transform: scale(1)
+		}
+	}
+
+	@keyframes sk {
+
+		0%,
+		100%,
+		80% {
+			-webkit-transform: scale(0);
+			transform: scale(0)
+		}
+
+		40% {
+			-webkit-transform: scale(1);
+			transform: scale(1)
+		}
+	}
+</style>
+
+<main id="body">
+	<h1>商品标题</h1>
+	<div id="box">
+		<img id='goods_img' src="/static/lazyload.gif">
+		<span id='qrcode'></span>
+		<p>扫描或长按识别二维码
+			<br />
+			<span id="info">了解商品的更多信息</span>
+		</p>
+	</div>
+	<h2>
+		<span id='pp'>￥0<i>券后价</i>
+		</span>
+		<span id='op'>￥0<i>原价</i>
+		</span>
+		<span id='p'>￥0<i>在售价</i>
+		</span>
+	</h2>
+	<h3>扫码或长按识别二维码领取淘宝优惠券购买</h3>
+</main>
+<div class="sk">
+	<div class="sk-c sk1"></div>
+	<div class="sk-c sk2"></div>
+	<div class="sk-c sk3"></div>
+</div>
+
+<script>
+//获取url中的参数
+function getUrlParam(name){
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return decodeURI(r[2]); return null;
+}
+
+//生成二维码
+function qrcodes(url){
+	new QRCode(document.getElementById("qrcode"), {
+		width: 500,
+		height: 500,
+		text: url,
+		colorDark : "#000000",
+		colorLight : "#ffffff",
+		correctLevel : QRCode.CorrectLevel.H
+	});
+}
+
+//生成图片
+function body2img(){
+	if (!is_visible()){
+		setTimeout(body2img,1000);
+		return false;
+	}
+	html2canvas(document.getElementById('body'), {
+		logging:false,
+		useCORS: true
+	}).then(function(canvas) {
+		var base64Img = canvas.toDataURL('image/png');
+		document.body.innerHTML = '<img width="100%" src="'+base64Img+'">';
+	});
+}
+
+// 是否可见
+function is_visible(){
+	return true;
+	var iframe = window.frameElement;
+	if (!iframe || !iframe.offsetWidth){
+		return false;
+	}
+	return iframe.offsetWidth > 0 || iframe.offsetHeight > 0;
+}
+
+// 业务流
+(function () {
+	var state = [];
+	state.price = state.title = state.id = state.img = 0;
+
+	//处理图片
+	var img = getUrlParam('img');
+	if (img == ''){
+		img = document.getElementById('goods_img').getAttribute('src');
+	}
+	document.getElementById('goods_img').src = img;
+	state.img = 1;
+
+	//处理标题
+	var title = decodeURIComponent(getUrlParam('title'));
+	if (title){
+		document.querySelector('h1').innerText = title;
+		document.title = title;
+		state.title = 1;
+	}
+
+	//处理价格
+	var op = document.getElementById('op');
+	var pp = document.getElementById('pp');
+	var p = document.getElementById('p');
+	var oprice = parseFloat(getUrlParam('oprice')); //原价
+	var price = parseFloat(getUrlParam('price'));  //在售价格
+	var coupon = parseFloat(getUrlParam('coupon'));  //优惠券金额
+	if (oprice){
+		op.innerHTML = '￥'+oprice+'<i>原价</i>';
+		if (price == oprice){
+			pp.innerHTML = '￥'+price+'<i>低价</i>';
+		}
+	}else{
+		op.style.display = 'none';
+	}
+	if (coupon){
+		document.getElementById('info').innerText = '领取'+coupon+'元优惠券';
+		if (price){
+			pp.innerHTML = '￥'+(price-coupon).toFixed(2)+'<i>券后价</i>';
+			p.innerHTML = '￥'+price+'<i>在售价</i>';
+		}else{
+			pp.innerHTML = '￥'+coupon+'<i>优惠券</i>';
+			p.style.display = 'none';
+		}
+	}else if (price){
+		if (price == oprice){
+			pp.innerHTML = '￥'+price+'<i>低价</i>';
+		}else{
+			pp.innerHTML = '￥'+price+'<i>折扣价</i>';
+		}
+		p.style.display = 'none';
+	}
+	state.price = 1;
+
+
+	//处理二维码
+	var id = getUrlParam('id');
+	if (id){
+		if (coupon){
+			qrcodes('https://tao.hooos.com/go?id='+id);
+		}else{
+			qrcodes('https://tao.hooos.com/goods_'+id+'.html');
+		}
+		state.id = 1;
+	}else{
+		qrcodes('https://tao.hooos.com');
+		state.id = 1;
+	}
+
+	//处理标题
+	var oprice = getUrlParam('oprice');
+	if (oprice){
+		document.querySelector('h1').innerHTML = title;
+		state.oprice = 1;
+	}
+
+	//处理标签
+	var tag = getUrlParam('tag');
+	if (tag){
+		var tag_html = '';
+		tags = tag.split(',');
+		for (var i = 0; i < tags.length; i++) {
+			if (tags[i]){
+				tag_html += '<span>'+tags[i]+'</span>';
+			}
+		}
+		document.querySelector('h3').innerHTML = tag_html;
+	}
+
+	// 处理
+	var interval = setInterval(function (){
+		var s = '';
+		for (var i = 0; i < state.length; i++) {
+			s += state[i];
+		}
+		if (s.indexOf('0') == -1){
+			clearInterval(interval);
+			if (is_visible()){
+				body2img();
+			}else{
+				setTimeout(body2img,1000);
+			}
+		}
+	},1000);
+})();
+</script>
+</body>
+
+</html>

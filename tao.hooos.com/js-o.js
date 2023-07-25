@@ -9,7 +9,9 @@ var viewer_css_path = 'https://cdn.staticfile.org/viewerjs/1.11.4/viewer.min.css
 var clipboard_js_path = 'https://cdn.staticfile.org/clipboard.js/2.0.11/clipboard.min.js';
 
 var swiper_js_path = 'https://cdn.staticfile.org/Swiper/5.4.5/js/swiper.min.js';
-var swiper_css_path = 'https://cdn.staticfile.org/Swiper/5.4.5/css/swiper.min.css';
+// var swiper_css_path = 'https://cdn.staticfile.org/Swiper/5.4.5/css/swiper.min.css';
+
+// ----
 
 // var swiper_bundle_js_path = 'https://cdn.staticfile.org/Swiper/10.0.4/swiper-bundle.min.js';
 // var swiper_bundle_css_path = 'https://cdn.staticfile.org/Swiper/10.0.4/swiper-bundle.min.css';
@@ -29,39 +31,42 @@ function loadJs(url, callback) {
     var ele = document.querySelector('script[load-js="' + url + '"]');
     if (ele) {
         if (callback) {
-            if (ele.complete) {
-                callback();
+            if (ele.addEventListener) {
+                ele.addEventListener('load', callback, false);
             } else {
-                if (ele.addEventListener) {
-                    ele.addEventListener('load', callback, false);
-                } else {
-                    ele.attachEvent('onreadystatechange', callback);
-                }
+                ele.attachEvent('onreadystatechange', callback);
+            }
+            if (ele.getAttribute('load-status')) {
+                callback();
             }
         }
         return false;
     }
 
+    var cb = function (){
+        if (callback){
+            callback();
+        }
+        document.querySelector('script[load-js="' + url + '"]').setAttribute('load-status', true);
+    }
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.setAttribute('load-js', url);
-    if (callback) {
-        if (script.addEventListener) {
-            script.addEventListener('load', callback, false);
-        } else {
-            script.attachEvent('onreadystatechange', callback);
-        }
+    if (script.addEventListener) {
+        script.addEventListener('load', cb, false);
+    } else {
+        script.attachEvent('onreadystatechange', cb);
     }
     script.src = url;
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
 // 图片延迟加载
-function lazyload(eles, src) {
+function lazyload(eles, src_name) {
     if (eles.length == 0) {
         return false;
     }
-    src = src || 'src';
+    src_name = src_name || 'src';
     var eles_length = eles.length;
     for (var i = 0; i < eles_length; i++) {
         var ele = eles[i];
@@ -69,13 +74,17 @@ function lazyload(eles, src) {
             continue;
         }
         ele.setAttribute('lazyload', true);
+        var src = ele.getAttribute(src_name);
+        if (src.indexOf('lazyload.gif') == -1){
+            src = ele.getAttribute('data-original-url') || ele.getAttribute('data-src') || ele.src;
+        }
 
-        if (ele.src.indexOf('.gif') != -1 || ele.src.indexOf('/imgextra/') != -1 || ele.src.indexOf('_400x400q90') != -1) {
-            ele.setAttribute('data-src', ele.src);
-        } else if (ele.src.indexOf('.alicdn.com') != -1 || ele.src.indexOf('.tbcdn.cn') != -1) {
-            ele.setAttribute('data-src', ele.src + '_400x400q90');
+        if (src.indexOf('.gif') != -1 || src.indexOf('/imgextra/') != -1 || src.indexOf('_400x400q90') != -1) {
+            ele.setAttribute('data-src', src);
+        } else if (src.indexOf('.alicdn.com') != -1 || src.indexOf('.tbcdn.cn') != -1) {
+            ele.setAttribute('data-src', src + '_400x400q90');
         } else {
-            ele.setAttribute('data-src', ele.src);
+            ele.setAttribute('data-src', src);
         }
 
         ele.src = cdn_path + 'lazyload.gif';
@@ -133,28 +142,25 @@ function links() {
 links();
 
 // 图片预览
-function images_viewer() {
-    if (!document.querySelector('article img,section>div img')) {
+function images_viewer(en) {
+    var ele = document.querySelector(en);
+    if (!ele) {
         return false;
     }
-    var articles = document.querySelectorAll('article:not([viewer]),section>div:not([viewer])');
 
     var viewer_js = function () {
-        for (var i = 0; i < articles.length; i++) {
-            new Viewer(articles[i], {
-                url: function (image) {
-                    return image.getAttribute('data-src') || image.src;
-                },
-                shown: function () {
-                    lazyload(document.querySelectorAll('.viewer-list li img:not([lazyload])'), 'data-original-url');
-                },
-                view: function (o) {
-                    var url = o.detail.image.src;
-                    o.detail.image.src = url.replace('_400x400q90', '');
-                }
-            });
-            articles[i].setAttribute('viewer', true);
-        }
+        new Viewer(ele, {
+            url: function (image) {
+                return image.getAttribute('data-src') || image.src;
+            },
+            shown: function () {
+                lazyload(document.querySelectorAll('.viewer-list li img:not([lazyload])'), 'data-original-url');
+            },
+            view: function (o) {
+                o.detail.image.src = o.detail.image.src.replace('_400x400q90', '');
+            }
+        });
+        ele.setAttribute('viewer', true);
     }
 
     // loadCss(cdn_path + 'viewer.min.css');
@@ -162,7 +168,6 @@ function images_viewer() {
     loadCss(viewer_css_path);
     loadJs(viewer_js_path, viewer_js);
 }
-images_viewer();
 
 // 商品幻灯片
 (function () {
@@ -236,6 +241,7 @@ images_viewer();
                 goods_swiper.autoplay.start();
             }
         }
+        images_viewer('main>article figure');
         lazyload(document.querySelectorAll('main>article figure img'));
     }
 
@@ -358,6 +364,8 @@ images_viewer();
             });
         };
     }
+
+    images_viewer('section>div');
 })();
 
 // 是否IE
@@ -1151,3 +1159,45 @@ countdown();
         async: true
     });
 })();
+
+// classList 兼容IE10
+if (!('classList' in document.documentElement)) {
+    Object.defineProperty(HTMLElement.prototype, 'classList', {
+        get: function() {
+            var self = this;
+            function update(fn) {
+                return function(value) {
+                    var classes = self.className.split(/\s+/g),
+                        index = classes.indexOf(value);
+                    fn(classes, index, value);
+                    self.className = classes.join(" ");
+                }
+            }
+            
+            return {                    
+                add: update(function(classes, index, value) {
+                    if (!~index) classes.push(value);
+                }),
+                
+                remove: update(function(classes, index) {
+                    if (~index) classes.splice(index, 1);
+                }),
+                
+                toggle: update(function(classes, index, value) {
+                    if (~index)
+                        classes.splice(index, 1);
+                    else
+                        classes.push(value);
+                }),
+                
+                contains: function(value) {
+                    return !!~self.className.split(/\s+/g).indexOf(value);
+                },
+                
+                item: function(i) {
+                    return self.className.split(/\s+/g)[i] || null;
+                }
+            };
+        }
+    });
+}

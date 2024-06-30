@@ -21,3 +21,9 @@
 [土嗨DJ网](https://dj.k7dj.com)：[dj.k7dj.com](https://dj.k7dj.com)（[DJ舞曲](https://dj.k7dj.com)）
 
 [牛逼喊麦网](https://mc.k7dj.com)：[mc.k7dj.com](https://mc.k7dj.com)（[MC喊麦](https://mc.k7dj.com)）
+
+---
+
+[WEBKT](https://www.webkt.com)：[www.webkt.com](https://www.webkt.com)（[网站目录](https://www.webkt.com)）
+
+[UUOOO](https://uuooo.com)：[uuooo.com](https://uuooo.com)（[Anonymous Community](https://uuooo.com)）

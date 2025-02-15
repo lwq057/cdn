@@ -27,3 +27,5 @@
 [WEBKT](https://www.webkt.com)：[www.webkt.com](https://www.webkt.com)（[网站目录](https://www.webkt.com)）
 
 [UUOOO](https://uuooo.com)：[uuooo.com](https://uuooo.com)（[Anonymous Community](https://uuooo.com)）
+
+[UUOOO Tool](https://tool.uuooo.com)：[tool.uuooo.com](https://tool.uuooo.com)（[Tools](https://tool.uuooo.com)）

@@ -8,6 +8,8 @@
 
 [虎窝淘](https://tao.hooos.com)：[tao.hooos.com](https://tao.hooos.com)（[淘宝优惠券](https://tao.hooos.com)）
 
+[虎窝好物](https://goods.hooos.com)：[goods.hooos.com](https://goods.hooos.com)（[值得买的好物推荐](https://goods.hooos.com)）
+
 [优惠世家](https://tao.hvcis.com)：[tao.hvcis.com](https://tao.hvcis.com)（[优惠券领取](https://tao.hvcis.com)）
 
 [淘优券](https://www.taouq.com)：[www.taouq.com](https://www.taouq.com)（[天猫优惠券](https://www.taouq.com)）
